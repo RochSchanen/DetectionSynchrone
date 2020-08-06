@@ -1,0 +1,28 @@
+# pin constraints file for Alchitry Cu (AlCu) device
+
+# unused pins are commented out to prevent warnings
+
+# 100MHz Clock (input)
+
+set_io AlCu_CLOCK P7
+
+# LEDs (output)
+
+set_io AlCu_LED_0 J11
+set_io AlCu_LED_1 K11
+
+# set_io AlCu_LED_2 K12
+# set_io AlCu_LED_3 K14
+# set_io AlCu_LED_4 L12
+# set_io AlCu_LED_5 L14
+# set_io AlCu_LED_6 M12
+# set_io AlCu_LED_7 N14
+
+# UART B (input, output)
+
+set_io AlCu_UART_RX P14
+set_io AlCu_UART_TX M9
+
+# Reset (input)
+
+# set_io AlCu_RESET P8
