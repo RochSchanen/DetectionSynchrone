@@ -4,3 +4,40 @@ logfile.txt
 
 - Create repository "https://github.com/RochSchanen/DetectionSynchrone"
 - add notes.txt and logfile.txt
+- add test files for Alchitry Cu device.
+- these files compile with IceCube2 software provided by lattice.
+- The programer used can be the AlchitryCu loader or the IceStorm loader.
+
+IceCube2 configuration for the Alchitry Board
+	- Device familly "iCE40"
+	- Device "HX8K"
+	- Device Package "CB132"
+	- IOBank Voltage "3.3" volts for all banks
+	- add files:
+		latticeBlink.vhd : VHDL language version
+		latticeBlink.pcf : pins contraints
+		latticeBlink.sdc : timer constraints
+	- note: works alternatively with the Verilog language version too: "latticeBlink.v".
+	- All files are generated in the "latticeBlink" sub folder (not in repository).
+	- The binary file "latticeBlink_bitmap.bin" is found in the "latticeBlink/latticeBlink_Implmnt/sbt/outputs/bitmap" folder.
+
+- add "latticeBlink_bitmap.bin" to the repo to check the programers when degbugging.
+- programming checked:
+
+	>iceprog latticeBlink_bitmap.bin 
+	init..
+	cdone: high
+	reset..
+	cdone: low
+	flash ID: 0xEF 0x40 0x16 0x00
+	file size: 135179
+	erase 64kB sector at 0x000000..
+	erase 64kB sector at 0x010000..
+	erase 64kB sector at 0x020000..
+	programming..
+	reading..
+	VERIFY OK
+	cdone: high
+	Bye.
+
+- led0 blinks at typical frequency of 100MHZ/2^26 ~ 1HZ.
