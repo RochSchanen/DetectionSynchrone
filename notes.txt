@@ -1,0 +1,99 @@
+notes.txt
+
+Project:
+
+Design of two in one Direct Digital Synthetiser coupled with a Synchronous Detection using an FPGA, a DAC and an ADC.
+
+DDS
+	Basis
+	FPGA implementation
+
+LIA
+	Basis
+	Digital Signal Processing
+	FPGA implementation
+
+FPGA programming
+
+	tutorials:
+		"https://vhdlwhiz.com/"
+		"https://www.nandland.com/"
+
+	language
+		
+		VHDL
+		
+		Verilog
+
+	compilers and programers
+	
+		Quartus II
+			for programming the DE0-Nano.
+			Verilog, VHDL and Graphic.
+			super heavy.
+			modelSim simulator.
+
+		Vivado Suite
+			for programming the ARTY-S7
+			Verilog, VHDL and Graphic.
+			super heavy.
+			modelSim simulator.
+
+		IceStorm (Yosys, nextprn, icestorm)
+			for programing iCE40 devices.
+			with loader.
+			Open source.
+			but Only Verilog.
+			separate simulator required.
+
+		IceCube2
+			for programing iCE40 devices.
+			VHDL, Verilog.
+			no simulator.
+
+		Alchitry labs
+			front end for vivado, icecube, icestorm.
+			one of these sythesizer needs to be installed at least.
+			for programing alchitry Au (Xilinx) or Cu (lattice).
+			It has its own programming language "Lucid"
+			Only verilog if used with icestorm.
+			no loader.
+
+		Alchitry loader
+			A loader for loading to alchitry device.
+			One can use the icestorm programmer to
+			upload a file created by icecube.
+
+	simulators
+
+		LogicCircuit
+			"http://www.logiccircuit.org/"
+			for testing concept.
+			Light.
+			Clean png exports.
+
+		GHDL
+			for simulating VHDL programs.
+
+		for Verilog
+			check: "https://github.com/cambridgehackers/open-src-cvc"
+			check: "http://iverilog.icarus.com/"
+
+		more:
+			check: "http://www.tachyon-da.com/"
+
+	Other:
+
+		GTKwave (signals viewer)
+			"http://gtkwave.sourceforge.net/"
+			"https://github.com/gtkwave"
+			for displaying simulated output files.
+
+DAC 
+	Basis
+	Existing Devices
+	Homemade Implementation
+
+ADC
+	Basis
+	Existing Devices

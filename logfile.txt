@@ -1,0 +1,6 @@
+logfile.txt
+
+2020 08 06
+
+- Create repository "https://github.com/RochSchanen/DetectionSynchrone"
+- add notes.txt and logfile.txt
