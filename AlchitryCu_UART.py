@@ -53,10 +53,10 @@
 # >>>rm = pyvisa.ResourceManager()
 # >>>print(rm.list_resources())
 # prints the available intruments name
-# (	'ASRL/dev/ttyS4::INSTR', 
-# 	'ASRL/dev/ttyS0::INSTR',
-# 	'ASRL/dev/ttyUSB1::INSTR',
-# 	'ASRL/dev/ttyUSB0::INSTR'
+# ( 'ASRL/dev/ttyS4::INSTR', 
+#   'ASRL/dev/ttyS0::INSTR',
+#   'ASRL/dev/ttyUSB1::INSTR',
+#   'ASRL/dev/ttyUSB0::INSTR'
 # )
 # ttyUSB0 is used to program the Alchitry Cu EEPROM
 # ttyUSB1 is used for communicating with the configured FPGA
@@ -67,7 +67,9 @@
 # usage:
 # >./AlchitryCu_UART.py
 
+
 PORTNAME = 'ASRL/dev/ttyUSB1::INSTR'
+
 
 #################################################
 # import useful constants and methods from pyvisa
@@ -76,9 +78,9 @@ from pyvisa.constants import VI_ASRL_STOP_ONE
 from pyvisa.constants import VI_ASRL_STOP_ONE5
 from pyvisa.constants import VI_ASRL_STOP_TWO
 stop_bits_constants = {
-	VI_ASRL_STOP_ONE 	:	"1.0",
-	VI_ASRL_STOP_ONE5 	:	"1.5",
-	VI_ASRL_STOP_TWO 	:	"2.0"
+    VI_ASRL_STOP_ONE    :   "1.0",
+    VI_ASRL_STOP_ONE5   :   "1.5",
+    VI_ASRL_STOP_TWO    :   "2.0"
 }
 
 from pyvisa.constants import VI_ASRL_END_BREAK
@@ -86,10 +88,10 @@ from pyvisa.constants import VI_ASRL_END_NONE
 from pyvisa.constants import VI_ASRL_END_TERMCHAR
 from pyvisa.constants import VI_ASRL_END_LAST_BIT
 end_input_constant = {
-	VI_ASRL_END_BREAK 		: "Break",
-	VI_ASRL_END_NONE 		: "None",
-	VI_ASRL_END_TERMCHAR	: "TermChar",
-	VI_ASRL_END_LAST_BIT	: "LastBit"
+    VI_ASRL_END_BREAK       : "Break",
+    VI_ASRL_END_NONE        : "None",
+    VI_ASRL_END_TERMCHAR    : "TermChar",
+    VI_ASRL_END_LAST_BIT    : "LastBit"
 }
 
 from pyvisa.constants import VI_ASRL_PAR_EVEN
@@ -98,11 +100,11 @@ from pyvisa.constants import VI_ASRL_PAR_NONE
 from pyvisa.constants import VI_ASRL_PAR_ODD
 from pyvisa.constants import VI_ASRL_PAR_SPACE
 parity_constants = {
-	VI_ASRL_PAR_EVEN 	: "Even",
-	VI_ASRL_PAR_MARK 	: "Mark",
-	VI_ASRL_PAR_NONE 	: "None",
-	VI_ASRL_PAR_ODD 	: "Odd",
-	VI_ASRL_PAR_SPACE 	: "Space"
+    VI_ASRL_PAR_EVEN    : "Even",
+    VI_ASRL_PAR_MARK    : "Mark",
+    VI_ASRL_PAR_NONE    : "None",
+    VI_ASRL_PAR_ODD     : "Odd",
+    VI_ASRL_PAR_SPACE   : "Space"
 }
 
 from pyvisa import ResourceManager
@@ -110,29 +112,60 @@ from pyvisa import ResourceManager
 # import useful constants and methods from pyvisa
 #################################################
 
-import sys
+
+#################################################
+# import useful constants and methods from sys
+
+from sys import version
+from sys import argv
+from sys import exit
+
+# import useful constants and methods from sys
+#################################################
+
 
 print("file: AlchitryCu_UART.py")
 print("content: Alchitry Cu UART tester")
 print("created: 2020 August 8 Saturday")
 print("author: roch schanen")
 print("comment: test UART communication with the FPGA")
-print("run Python3:" + sys.version);
+print("run Python3:" + version);
 
 # instanciate the ResourceManager
 rm = ResourceManager()
 
 # instanciate the instrument
-if PORTNAME in rm.list_resources():
-	print(f"Open port {PORTNAME}")
-	AlCu_UART = rm.open_resource(PORTNAME)
-	AlCu_UART.baud_rate = 781250 # 100MHz / 2^7
-	print(f"Baud rate = {AlCu_UART.baud_rate} bit/s")
-	print(f"Data bits = {AlCu_UART.data_bits} bits")
-	print(f"Stop bits = {stop_bits_constants[AlCu_UART.stop_bits]} bit(s)")
-	print(f"Parity    = {parity_constants[AlCu_UART.parity]}")
+if not PORTNAME in rm.list_resources(): exit()
 
-AlCu_UART.write("Z")
-print(f"-{AlCu_UART.read()}-")
+# print(f"Open port {PORTNAME}")
+AlCu_UART = rm.open_resource(PORTNAME)
+AlCu_UART.baud_rate = 781250 # 100MHz / 2^7
+AlCu_UART.write_termination = ""
+
+print(f"Baud rate = {AlCu_UART.baud_rate} bit/s")
+print(f"Data bits = {AlCu_UART.data_bits} bits")
+print(f"Stop bits = {stop_bits_constants[AlCu_UART.stop_bits]} bit(s)")
+print(f"Parity    = {parity_constants[AlCu_UART.parity]}")
+print(f"termination string '{AlCu_UART.write_termination}'")
+
+# get value from command line
+v = int(f'0b{argv[1]}',2)
+
+# convert to bytes
+b = v.to_bytes(1,'big')
+
+# display
+v = int.from_bytes(b, 'big')
+print(f"write_raw: {argv[1]}")
+
+# write one byte
+AlCu_UART.write_raw(b)
+
+# get one byte
+b = AlCu_UART.read_bytes(1)
+
+# display
+v = int.from_bytes(b, 'big')
+print(f"read {v:08b}")
 
 AlCu_UART.close()
