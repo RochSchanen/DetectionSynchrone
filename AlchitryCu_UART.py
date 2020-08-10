@@ -169,3 +169,22 @@ v = int.from_bytes(b, 'big')
 print(f"read {v:08b}")
 
 AlCu_UART.close()
+
+# examples:
+# >./AlchitryCu_UART.py 01010101
+# file: AlchitryCu_UART.py
+# content: Alchitry Cu UART tester
+# created: 2020 August 8 Saturday
+# author: roch schanen
+# comment: test UART communication with the FPGA
+# run Python3:3.8.2 (default, Jul 16 2020, 14:00:26) 
+# [GCC 9.3.0]
+# Baud rate = 781250 bit/s
+# Data bits = 8 bits
+# Stop bits = 1.0 bit(s)
+# Parity    = None
+# termination string ''
+# write_raw: 01010101
+# read 01010101
+
+# working on the chip (leds display) and on oscilloscope.
