@@ -81,3 +81,12 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 - the UART receive VHDL code works (Add data valid later).
 - add binary string to the python script command line for testing.
 - converts files tabs to spaces
+
+2020 08 12
+
+- upgrade AlchitryCu_UART.py script:
+	- automatic detection of the UART port.
+	- use fist argument of the command line parameter as the value to send to the port in binary format. The result is displayed on the Alchitry LEDs.
+	- The transmission rate is as fast as 781250 bits/s (could be higher)
+	- However, when several bytes are sent, they are not separated by a constant period of time (check the order of magnitude).
+
