@@ -90,3 +90,10 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 	- The transmission rate is as fast as 781250 bits/s (could be higher)
 	- However, when several bytes are sent, they are not separated by a constant period of time (check the order of magnitude).
 
+2020 08 14
+
+- Add accumulator.vhd which contains the "integrator" component design.
+- create AlchitryCu.vhd which defines "AlchitryCu" top entity of the project.
+- add more entries to the pin definitions file "AlchitryCu.pcf"
+- add comments in the constraint file "Alchitry.sdc"
+- compile and load: check oscilloscope signals for counter increments of 3, 2 and 1. The periods obtained for the most significant bit are 850ns, 1280ns and 2560ns, corresponding respectively to the frequencies (300/256)MHZ, (200/256)MHz, (100/256)MHz as expected.

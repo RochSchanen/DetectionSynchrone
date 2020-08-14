@@ -74,12 +74,15 @@ FPGA programming
 
 		GHDL
 			for simulating VHDL programs.
+			for testing at Register-transfer level (RTL)
+			Light.
+			Clean VCD export files (use gtkwave for display).
 
-		for Verilog
+		for Verilog (might want to check the following:)
 			check: "https://github.com/cambridgehackers/open-src-cvc"
 			check: "http://iverilog.icarus.com/"
 
-		more:
+		more to check:
 			check: "http://www.tachyon-da.com/"
 
 	Other:
