@@ -9,45 +9,45 @@ logfile.txt
 - The programmer used can be the AlchitryCu loader or the IceStorm loader.
 
 IceCube2 configuration for the Alchitry Board
-	- Device familly "iCE40"
-	- Device "HX8K"
-	- Device Package "CB132"
-	- IOBank Voltage "3.3" volts for all banks
-	- add files:
-		latticeBlink.vhd : VHDL language version
-		latticeBlink.pcf : pins constraints
-		latticeBlink.sdc : timer constraints
-	- note: works alternatively with the Verilog language version too: "latticeBlink.v".
-	- All files are generated in the "latticeBlink" sub folder (not in repository).
-	- The binary file "latticeBlink_bitmap.bin" is found in the "latticeBlink/latticeBlink_Implmnt/sbt/outputs/bitmap" folder.
+    - Device familly "iCE40"
+    - Device "HX8K"
+    - Device Package "CB132"
+    - IOBank Voltage "3.3" volts for all banks
+    - add files:
+        latticeBlink.vhd : VHDL language version
+        latticeBlink.pcf : pins constraints
+        latticeBlink.sdc : timer constraints
+    - note: works alternatively with the Verilog language version too: "latticeBlink.v".
+    - All files are generated in the "latticeBlink" sub folder (not in repository).
+    - The binary file "latticeBlink_bitmap.bin" is found in the "latticeBlink/latticeBlink_Implmnt/sbt/outputs/bitmap" folder.
 
 - add "latticeBlink_bitmap.bin" to the repo to check the programmers when debugging.
 - programming checked:
 
-	>iceprog latticeBlink_bitmap.bin 
-	init..
-	cdone: high
-	reset..
-	cdone: low
-	flash ID: 0xEF 0x40 0x16 0x00
-	file size: 135179
-	erase 64kB sector at 0x000000..
-	erase 64kB sector at 0x010000..
-	erase 64kB sector at 0x020000..
-	programming..
-	reading..
-	VERIFY OK
-	cdone: high
-	Bye.
+    >iceprog latticeBlink_bitmap.bin 
+    init..
+    cdone: high
+    reset..
+    cdone: low
+    flash ID: 0xEF 0x40 0x16 0x00
+    file size: 135179
+    erase 64kB sector at 0x000000..
+    erase 64kB sector at 0x010000..
+    erase 64kB sector at 0x020000..
+    programming..
+    reading..
+    VERIFY OK
+    cdone: high
+    Bye.
 
 - led0 blinks at typical frequency of 100MHZ/2^26 ~ 1HZ.
 - add files:
-	AlchitryCu_UART.pcf
-	AlchitryCu_UART.sdc
-	AlchitryCu_UART.vhd
-	AlchitryCu_UART.py
+    AlchitryCu_UART.pcf
+    AlchitryCu_UART.sdc
+    AlchitryCu_UART.vhd
+    AlchitryCu_UART.py
 - compile and program:
-	AlchitryCu_UART_bitmap.bin
+    AlchitryCu_UART_bitmap.bin
 - add "AlchitryCu_UART_bitmap.bin" to the project for later tests
 - when "AlchitryCu_UART_bitmap.bin" is loaded to the device,
 run the python test program "AlchitryCu_UART.py" to check the echo
@@ -55,16 +55,16 @@ response of the device through UART port B ("ttyUSB1")
 - note: "ttyUSB0" is used by the programmer to store the binary file
 in the eprom that configures the FPGA (AlchitryCu specific):
 
-	>./AlchitryCu_UART.py
+    >./AlchitryCu_UART.py
 
-	|hello 1
-	|
-	|hello 2
-	|
-	|hello 3
-	|
-	|hello 4
-	|
+    |hello 1
+    |
+    |hello 2
+    |
+    |hello 3
+    |
+    |hello 4
+    |
 
 - So far, so good.
 
@@ -85,10 +85,10 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 2020 08 12
 
 - upgrade AlchitryCu_UART.py script:
-	- automatic detection of the UART port.
-	- use fist argument of the command line parameter as the value to send to the port in binary format. The result is displayed on the Alchitry LEDs.
-	- The transmission rate is as fast as 781250 bits/s (could be higher)
-	- However, when several bytes are sent, they are not separated by a constant period of time (check the order of magnitude).
+    - automatic detection of the UART port.
+    - use fist argument of the command line parameter as the value to send to the port in binary format. The result is displayed on the Alchitry LEDs.
+    - The transmission rate is as fast as 781250 bits/s (could be higher)
+    - However, when several bytes are sent, they are not separated by a constant period of time (check the order of magnitude).
 
 2020 08 14
 

@@ -4,28 +4,28 @@
 
 # Alchitry Cu Main Board Pins
 
-# assert	NAME 			     PIN    -- FUNCTION 		   BANK
+# assert  NAME           PIN    -- FUNCTION        BANK
 
-  set_io 	AlCu_CLOCK 		 P7		  -- IOB_81_GBIN5	   D 40
-# set_io 	AlCu_RESET 		 P8		  -- IOB_82_GBIN4	   D 39
-# set_io 	AlCu_UART_TX 	 M9		  -- IOB_91			     D 14
-# set_io 	AlCu_UART_RX 	 P14		-- IOR_110			   D 15
-# set_io 	AlCu_LED_0 		 J11		-- IOR_119			   D 49
-# set_io 	AlCu_LED_1 		 K11		-- IOR_116			   D 48
-# set_io 	AlCu_LED_2 		 K12		-- IOR_115			   D 2
-# set_io 	AlCu_LED_3 		 K14		-- IOR_117			   D 3
-# set_io 	AlCu_LED_4 		 L12		-- IOR_111			   D 46
-# set_io 	AlCu_LED_5 		 L14		-- IOR_114			   D 45
-# set_io 	AlCu_LED_6 		 M12		-- IOR_109			   D 5
-# set_io 	AlCu_LED_7 		 N14		-- IOR_112			   D 6
+  set_io  AlCu_CLOCK     P7     -- IOB_81_GBIN5    D 40
+# set_io  AlCu_RESET     P8     -- IOB_82_GBIN4    D 39
+# set_io  AlCu_UART_TX   M9     -- IOB_91          D 14
+# set_io  AlCu_UART_RX   P14    -- IOR_110         D 15
+# set_io  AlCu_LED_0     J11    -- IOR_119         D 49
+# set_io  AlCu_LED_1     K11    -- IOR_116         D 48
+# set_io  AlCu_LED_2     K12    -- IOR_115         D 2
+# set_io  AlCu_LED_3     K14    -- IOR_117         D 3
+# set_io  AlCu_LED_4     L12    -- IOR_111         D 46
+# set_io  AlCu_LED_5     L14    -- IOR_114         D 45
+# set_io  AlCu_LED_6     M12    -- IOR_109         D 5
+# set_io  AlCu_LED_7     N14    -- IOR_112         D 6
 
 Alchitry Br Board 
 
-  set_io	AlCu_IO0		   A6 		-- IOT_198_GBIN0	 B 2
-  set_io	AlCu_IO1		   A10		-- IOT_181			   B 5
-  set_io	AlCu_IO2		   C9 		-- IOT_190 			   B 8
-  set_io	AlCu_IO3		   A12		-- IOT_170 			   B 11
-  set_io	AlCu_IO4		   C14		-- IOR_154 			   B 14
-  set_io	AlCu_IO5		   E14		-- IOR_148 			   B 17
-  set_io	AlCu_IO6		   F14		-- IOR_140_GBIN3 	 B 20
-  set_io	AlCu_IO7		   H12		-- IOR_120			   B 23
+  set_io  AlCu_IO0       A6     -- IOT_198_GBIN0   B 2
+  set_io  AlCu_IO1       A10    -- IOT_181         B 5
+  set_io  AlCu_IO2       C9     -- IOT_190         B 8
+  set_io  AlCu_IO3       A12    -- IOT_170         B 11
+  set_io  AlCu_IO4       C14    -- IOR_154         B 14
+  set_io  AlCu_IO5       E14    -- IOR_148         B 17
+  set_io  AlCu_IO6       F14    -- IOR_140_GBIN3   B 20
+  set_io  AlCu_IO7       H12    -- IOR_120         B 23
