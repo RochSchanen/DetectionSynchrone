@@ -104,5 +104,8 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 - split accumulator.vhd in components part: addsync.vhd, fifobuf.vhd, placc.vhd
 - add simulated rom component srom.vhd, a file maker MakeSinBusLengthxBits.py for creating rom memory files, a test memory file SIN256x8.txt.
 - create library folder to contain the component files.
-- create test bench and benches folder.
+- create test bench and benches folder
+- new library tested using bench
+- new library synthesised and run using icecube2 and uploaded to the Alchitry Cu.
+- see picture "IMG_20200815_123831.jpg"
 

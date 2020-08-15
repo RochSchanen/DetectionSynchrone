@@ -24,14 +24,14 @@ architecture AlchitryCu_arch of AlchitryCu is
     constant S : integer := 8; -- accumulator width
 
     -- components
-    component Integrator
+    component placc
         generic (size : integer);
         port (
             r : in std_logic; -- reset
             t : in std_logic; -- clock
             a : out std_logic_vector(size-1 downto 0)
         );
-    end component Integrator;
+    end component placc;
     
     -- signals
     signal o : std_logic_vector(S-1 downto 0);
@@ -39,7 +39,7 @@ architecture AlchitryCu_arch of AlchitryCu is
     begin
 
     -- instanciate accumulator
-    ACU : Integrator
+    ACU : placc
         generic map(S)
         port map ('1', AlCu_CLOCK, o);
 

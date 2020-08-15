@@ -1,8 +1,7 @@
-# pin constraints file for Alchitry Cu (AlCu) device
+# pin constraints file for Alchitry Cu device (prefixed "AlCu_")
+# (comment out unused pins to prevent warnings from synthesiser) 
 
-# comment unused pin out to prevent warnings from synthesiser
-
-# Alchitry Cu Main Board Pins
+##### Alchitry Cu Main Board Pins
 
 # assert  NAME           PIN    -- FUNCTION        BANK
 
@@ -19,7 +18,7 @@
 # set_io  AlCu_LED_6     M12    -- IOR_109         D 5
 # set_io  AlCu_LED_7     N14    -- IOR_112         D 6
 
-Alchitry Br Board 
+##### Alchitry Br Board 
 
   set_io  AlCu_IO0       A6     -- IOT_198_GBIN0   B 2
   set_io  AlCu_IO1       A10    -- IOT_181         B 5
