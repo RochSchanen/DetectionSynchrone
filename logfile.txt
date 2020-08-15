@@ -109,3 +109,4 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 - new library synthesised and run using icecube2 and uploaded to the Alchitry Cu.
 - see picture "IMG_20200815_123831.jpg"
 
+- todo: rename Cu to Br in pcf file.
