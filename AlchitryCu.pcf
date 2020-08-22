@@ -64,8 +64,8 @@
 # set_io  AlBr_UART_RX   P14    # IOR_110         D 15
 
 # 9 pins SIL connector:
-# set_io  AlBr_IO0       A6     # IOT_198_GBIN0   B 2
-# set_io  AlBr_IO1       A10    # IOT_181         B 5
+  set_io  AlBr_IO0       A6     # IOT_198_GBIN0   B 2
+  set_io  AlBr_IO1       A10    # IOT_181         B 5
 # set_io  AlBr_IO2       C9     # IOT_190         B 8
 # set_io  AlBr_IO3       A12    # IOT_170         B 11
 # set_io  AlBr_IO4       C14    # IOR_154         B 14
@@ -95,8 +95,8 @@
 
 # assert  NAME           PIN    # FUNCTION        BANK
 
-  set_io  AlIo_LED00     G14    #
-  set_io  AlIo_LED01     F14    #
+# set_io  AlIo_LED00     G14    #
+# set_io  AlIo_LED01     F14    #
 # set_io  AlIo_LED02     E12    #
 # set_io  AlIo_LED03     E14    #
 # set_io  AlIo_LED04     D14    #
@@ -221,7 +221,7 @@
 #     2     #
 #############
 
-  set_io AlIo_BTN0       G11    -io_std SB_LVCMOS -pullup no
+# set_io AlIo_BTN0       G11    -io_std SB_LVCMOS -pullup no
 # set_io AlIo_BTN1       H11    -io_std SB_LVCMOS -pullup no
 # set_io AlIo_BTN2       H12    -io_std SB_LVCMOS -pullup no
 # set_io AlIo_BTN3       J12    -io_std SB_LVCMOS -pullup no

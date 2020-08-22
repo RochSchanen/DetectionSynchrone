@@ -24,7 +24,8 @@ use ieee.numeric_std.all;
 
 entity AlchitryCuAlchitryIo is
     port(
-        AlIo_LED00 : inout std_ulogic;
+        AlBr_IO0 : out std_logic;
+        AlBr_IO1 : out std_logic;
         AlCu_CLOCK : in std_logic
    );
 end entity AlchitryCuAlchitryIo;
@@ -43,18 +44,84 @@ architecture arch of AlchitryCuAlchitryIo is
             cli : in std_logic; 
             clo : out std_logic
         );
-    end component;
+    end component clkdiv;
+
+    component DigWavFrm
+        port(
+            cli : in  std_logic;
+            dat  : out std_logic
+        );
+    end component DigWavFrm;
+
+    -- declare signals
+
+    signal clk : std_logic;
 
 begin
 
     -- instanciate components
 
     clkdiv_inst : clkdiv
-        generic map(25)
-        port map(AlCu_CLOCK, AlIo_LED00);
+        generic map(4)
+        port map(AlCu_CLOCK, clk);
+
+    digwavfrm_inst : DigWavFrm
+        port map (clk, AlBr_IO1);
+
+    AlBr_IO0 <= clk;
 
 -- done
 end architecture arch;
+
+
+
+
+
+-------------------------------------------------
+--                DIGWAVFRM
+-------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity DigWavFrm is
+    port (
+        -- input clock
+        cli : in  std_logic;
+        -- output data
+        dat  : out std_logic
+    );
+end entity DigWavFrm;
+
+-------------------------------------------------
+
+architecture DigWavFrm_arch of DigWavFrm is
+
+    -- setup digital wave form
+    constant DWM : std_logic_vector (15 downto 0) := "0101001100001111";
+
+    -- initialise counter
+    signal counter : std_logic_vector(3 downto 0);
+
+begin
+
+    process (cli)
+    begin
+
+        -- increment counter pointer on falling edge of clock
+        if falling_edge(cli) then
+            counter <= std_logic_vector(unsigned(counter)+1);
+        end if;
+   
+        -- validate waveform data on falling edge of clock
+        if rising_edge(cli) then
+            dat <= DWM(to_integer(unsigned(counter)));
+        end if;
+
+    end process;
+
+end architecture DigWavFrm_arch;
 
 
 

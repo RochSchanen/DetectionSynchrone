@@ -125,5 +125,5 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 - check SB_DFF: simple D flip-flop, OK.
 - check SB_IO: simple output pin configuration pin, OK.
 - add small doit script for loading last binary produced by icecube2
+- generate digital wave form of 16 bits length at frequency 100/16 MHz: OK.
 - 
-
