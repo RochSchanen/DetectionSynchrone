@@ -1,6 +1,6 @@
 logfile.txt
 
-2020 08 06
+2020 08 06 Thu
 
 - Create repository "https://github.com/RochSchanen/DetectionSynchrone"
 - add notes.txt and logfile.txt
@@ -68,12 +68,12 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 
 - So far, so good.
 
-2020 08 09
+2020 08 09 Sun
 
 - write UART receiver architecture
 - data echoed properly but leds shows the same value independently from the character send: value is 8+2 = 10. So the transmission is at least partially working. The outcome depends on the transmission frequency if the UART clock is slowed down to half the frequency.
 
-2020 08 10
+2020 08 10 Mon
 
 - Solder pins to the Alchitry Br to connect the agilent digital signals cable to monitor up to 16 channels at high-speed (2Gbit/s).
 - 100 MHz Clock, UART Tx, UART Rx, one Gnd, and eight single ended I/O pins are now accessible for measurements an testing. more will probably be required.
@@ -82,7 +82,7 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 - add binary string to the python script command line for testing.
 - converts files tabs to spaces
 
-2020 08 12
+2020 08 12 Wed
 
 - upgrade AlchitryCu_UART.py script:
     - automatic detection of the UART port.
@@ -90,7 +90,7 @@ in the eprom that configures the FPGA (AlchitryCu specific):
     - The transmission rate is as fast as 781250 bits/s (could be higher)
     - However, when several bytes are sent, they are not separated by a constant period of time (check the order of magnitude).
 
-2020 08 14
+2020 08 14 Fri
 
 - Add accumulator.vhd which contains the "integrator" component design.
 - create AlchitryCu.vhd which defines "AlchitryCu" top entity of the project.
@@ -99,7 +99,7 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 - compile and load: check oscilloscope signals for counter increments of 3, 2 and 1. The periods obtained for the most significant bit are 850ns, 1280ns and 2560ns, corresponding respectively to the frequencies (300/256)MHZ, (200/256)MHz, (100/256)MHz as expected.
 - re-organise folders.
 
-2020 08 15
+2020 08 15 Sat
 
 - split accumulator.vhd in components part: addsync.vhd, fifobuf.vhd, placc.vhd
 - add simulated rom component srom.vhd, a file maker MakeSinBusLengthxBits.py for creating rom memory files, a test memory file SIN256x8.txt.
@@ -109,4 +109,21 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 - new library synthesised and run using icecube2 and uploaded to the Alchitry Cu.
 - see picture "IMG_20200815_123831.jpg"
 
-- todo: rename Cu to Br in pcf file.
+2020 08 18
+
+- work on the pin constraint file.
+- found that the buttons and switches are configured with pull-up resistors.
+- the ice40hx8k-cb132 can be configured with internal pull-up resistors only.
+- so, you cannot link directly a pin to digital logic. You have to configure the pins as in/out ports, discharge any stray capacitors applying a low output voltage, and then readout the input value at the port immediately after.
+
+2020 08 21
+
+- work on the ICE40_HX8K_CB132 primitives library.
+- import primitives library using:
+    library sb_ice40_components_syn;
+    use sb_ice40_components_syn.components.all;
+- check SB_DFF: simple D flip-flop, OK.
+- check SB_IO: simple output pin configuration pin, OK.
+- add small doit script for loading last binary produced by icecube2
+- 
+

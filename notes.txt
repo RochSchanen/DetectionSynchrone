@@ -15,6 +15,14 @@ LIA
 
 FPGA programming
 
+    basics
+
+        before and after the rising edge of the clock
+        data must be set and steady ts seconds before
+        the rising edge and th seconds after.
+        ts is known as the Setup time.
+        th is known as the Hold time.
+
     tutorials:
         "https://vhdlwhiz.com/"
         "https://www.nandland.com/"
