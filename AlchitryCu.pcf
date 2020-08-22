@@ -66,7 +66,7 @@
 # 9 pins SIL connector:
   set_io  AlBr_IO0       A6     # IOT_198_GBIN0   B 2
   set_io  AlBr_IO1       A10    # IOT_181         B 5
-# set_io  AlBr_IO2       C9     # IOT_190         B 8
+  set_io  AlBr_IO2       C9     # IOT_190         B 8
 # set_io  AlBr_IO3       A12    # IOT_170         B 11
 # set_io  AlBr_IO4       C14    # IOR_154         B 14
 # set_io  AlBr_IO5       E14    # IOR_148         B 17

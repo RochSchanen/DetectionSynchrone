@@ -4,7 +4,7 @@
 rm AlchitryCuAlchitryIo_bitmap.bin
 
 # copy new binanry file
-cp //home/schanen/DetectionSynchrone/AlchitryCu/AlchitryCu_Implmnt/sbt/outputs/bitmap/AlchitryCuAlchitryIo_bitmap.bin AlchitryCuAlchitryIo_bitmap.bin
+cp //home/schanen/DetectionSynchrone/AlchitryCu/AlchitryCu_Implmnt/sbt/outputs/bitmap/AlchitryCu_bitmap.bin AlchitryCu_bitmap.bin
 
 # load current binary
-iceprog AlchitryCuAlchitryIo_bitmap.bin
+iceprog AlchitryCu_bitmap.bin

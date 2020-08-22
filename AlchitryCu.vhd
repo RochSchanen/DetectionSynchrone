@@ -1,6 +1,6 @@
 -- ########################################################
 
--- file: AlchitryCuAlchitryIo.vhd
+-- file: AlchitryCu.vhd
 -- content: testing AlchitryIo board
 -- Created: 2020 august 18
 -- Author: Roch Schanen
@@ -13,7 +13,7 @@
 
 
 -------------------------------------------------
---            ALCHITRYCUALCHITRYIO
+--                ALCHITRYCU
 -------------------------------------------------
 
 library ieee;
@@ -22,17 +22,18 @@ use ieee.numeric_std.all;
 
 -------------------------------------------------
 
-entity AlchitryCuAlchitryIo is
+entity AlchitryCu is
     port(
         AlBr_IO0 : out std_logic;
         AlBr_IO1 : out std_logic;
+        AlBr_IO2 : out std_logic;
         AlCu_CLOCK : in std_logic
    );
-end entity AlchitryCuAlchitryIo;
+end entity AlchitryCu;
 
 -------------------------------------------------
 
-architecture arch of AlchitryCuAlchitryIo is
+architecture arch of AlchitryCu is
 
     -- declare components
 
@@ -46,12 +47,13 @@ architecture arch of AlchitryCuAlchitryIo is
         );
     end component clkdiv;
 
-    component DigWavFrm
-        port(
-            cli : in  std_logic;
-            dat  : out std_logic
+    component refresher
+        port (
+            cli      : in  std_logic;
+            pulldown : out std_logic;
+            trigger  : out std_logic
         );
-    end component DigWavFrm;
+    end component refresher;
 
     -- declare signals
 
@@ -65,8 +67,8 @@ begin
         generic map(4)
         port map(AlCu_CLOCK, clk);
 
-    digwavfrm_inst : DigWavFrm
-        port map (clk, AlBr_IO1);
+    refresher_inst : refresher
+        port map (clk, AlBr_IO1, AlBr_IO2);
 
     AlBr_IO0 <= clk;
 
@@ -78,50 +80,47 @@ end architecture arch;
 
 
 -------------------------------------------------
---                DIGWAVFRM
+--                 REFRESHER
 -------------------------------------------------
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity DigWavFrm is
+entity refresher is
     port (
         -- input clock
         cli : in  std_logic;
-        -- output data
-        dat  : out std_logic
+        -- outputs
+        pulldown : out std_logic;
+        trigger  : out std_logic
     );
-end entity DigWavFrm;
+end entity refresher;
 
 -------------------------------------------------
 
-architecture DigWavFrm_arch of DigWavFrm is
-
-    -- setup digital wave form
-    constant DWM : std_logic_vector (15 downto 0) := "0101001100001111";
-
+architecture refresher_arch of refresher is
+    -- pull-down sequence
+    constant pld : std_logic_vector (0 to 15) := "0000000011111111";
+    -- trigger sequence
+    constant trg : std_logic_vector (0 to 15) := "0000000000011000";
     -- initialise counter
     signal counter : std_logic_vector(3 downto 0);
-
 begin
-
     process (cli)
     begin
-
         -- increment counter pointer on falling edge of clock
         if falling_edge(cli) then
             counter <= std_logic_vector(unsigned(counter)+1);
         end if;
-   
         -- validate waveform data on falling edge of clock
         if rising_edge(cli) then
-            dat <= DWM(to_integer(unsigned(counter)));
+            pulldown <= pld(to_integer(unsigned(counter)));
+            trigger  <= trg(to_integer(unsigned(counter)));
         end if;
-
     end process;
-
-end architecture DigWavFrm_arch;
+-- done
+end architecture refresher_arch;
 
 
 
