@@ -133,4 +133,5 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 2020 08 23
 
 - create refresher signals: ok.
-
+- modiify refresher using SB_LUT4 primitive : OK.
+-

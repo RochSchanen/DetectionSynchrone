@@ -49,14 +49,13 @@ architecture arch of AlchitryCu is
 
     component refresher
         port (
-            cli      : in  std_logic;
-            pulldown : out std_logic;
-            trigger  : out std_logic
+            cli : in  std_logic;    -- input clock
+            pld : out std_logic;    -- pull down signal
+            trg : out std_logic     -- trigger signal
         );
     end component refresher;
 
     -- declare signals
-
     signal clk : std_logic;
 
 begin
@@ -87,41 +86,33 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+library sb_ice40_components_syn;
+use sb_ice40_components_syn.components.all;
+
 entity refresher is
     port (
-        -- input clock
-        cli : in  std_logic;
-        -- outputs
-        pulldown : out std_logic;
-        trigger  : out std_logic
-    );
+        cli : in  std_logic;    -- input clock
+        pld : out std_logic;    -- pull down signal
+        trg : out std_logic);   -- trigger signal
 end entity refresher;
 
--------------------------------------------------
-
 architecture refresher_arch of refresher is
-    -- pull-down sequence
-    constant pld : std_logic_vector (0 to 15) := "0000000011111111";
-    -- trigger sequence
-    constant trg : std_logic_vector (0 to 15) := "0000000000011000";
-    -- initialise counter
-    signal counter : std_logic_vector(3 downto 0);
+    signal cnt : std_logic_vector(3 downto 0) :=  (others => '0');
 begin
+    LUT1 : SB_LUT4
+        generic map("0000000011111111")
+        port map (pld, cnt(0), cnt(1), cnt(2), cnt(3));
+    LUT2 : SB_LUT4
+        generic map("0000000000001111")
+        port map (trg, cnt(0), cnt(1), cnt(2), cnt(3));
     process (cli)
     begin
-        -- increment counter pointer on falling edge of clock
-        if falling_edge(cli) then
-            counter <= std_logic_vector(unsigned(counter)+1);
-        end if;
-        -- validate waveform data on falling edge of clock
         if rising_edge(cli) then
-            pulldown <= pld(to_integer(unsigned(counter)));
-            trigger  <= trg(to_integer(unsigned(counter)));
+            cnt <= std_logic_vector(unsigned(cnt)+1);
         end if;
     end process;
 -- done
 end architecture refresher_arch;
-
 
 
 
@@ -216,3 +207,15 @@ end architecture clkdiv_arch;
     --        OUTPUT_CLK          => '0',
     --        PACKAGE_PIN         => AlIo_LED01
     --    ); 
+
+--entity SB_LUT4 is
+--   generic(LUT_INIT:bit_vector(15 downto 0) := "1100001100111100");
+--   port ( 
+--      O  : out  std_logic;
+--      I0  : in  std_logic;
+--      I1  : in  std_logic;
+--      I2  : in  std_logic;
+--      I3  : in  std_logic   );
+
+--end SB_LUT4; 
+ 
