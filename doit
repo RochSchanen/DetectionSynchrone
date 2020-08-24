@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # remove previous binanry file
-rm AlchitryCuAlchitryIo_bitmap.bin
+rm AlchitryCu_bitmap.bin
 
 # copy new binanry file
 cp //home/schanen/DetectionSynchrone/AlchitryCu/AlchitryCu_Implmnt/sbt/outputs/bitmap/AlchitryCu_bitmap.bin AlchitryCu_bitmap.bin
