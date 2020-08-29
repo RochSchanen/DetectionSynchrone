@@ -136,4 +136,7 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 - modify refresher using SB_LUT4 primitive : OK.
 - add SB_IO primitive to allow for capacitance discharging through temporary pull-down the io port by applying a low level output signal then disable output and read input value: OK.
 
-- todo: adjust time constraints file for derived clocks to remove warnings.
+2020 08 29
+
+- update and split pins constraint files.
+- 
