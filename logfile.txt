@@ -139,4 +139,5 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 2020 08 29
 
 - update and split pins constraint files.
-- 
+- update binaries and add readme file.
+
