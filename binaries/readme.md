@@ -9,46 +9,47 @@ problems.
 AlchitryOriginal.bin is the original binary file that is shipped with the alchitry board.
 Plug the board and check available devices:
 
->~/alchitry-loader-1.0.0/tools/loader -l
-Devices: 
-  0: Alchitry Cu
-  1: Unknown
+>~/alchitry-loader-1.0.0/tools/loader -l  
+Devices:  
+  0: Alchitry Cu  
+  1: Unknown  
 
-load the configuration file to the flash memory:
+load the configuration file to the flash memory:  
 
->~/alchitry-loader-1.0.0/tools/loader -f AlchitryOriginal.bin 
-Resetting...
-cdone: low
-flash ID: 0xEF 0x40 0x16 0x00
-Programming...
-100%
-cdone: high
-Done.
+>~/alchitry-loader-1.0.0/tools/loader -f AlchitryOriginal.bin  
+Resetting...  
+cdone: low  
+flash ID: 0xEF 0x40 0x16 0x00  
+Programming...  
+100%  
+cdone: high  
+Done.  
+  
+leds should now display a wavy pattern.  
+press the reset button should display a fixed alternate pattern.  
 
-leds should now display a wavy pattern.
-press the reset button should display a fixed alternate pattern.
+2) Check your your alternate IceStorm loader with "AlchitryOriginal.bin":  
+Plug the board and load the configuration file:  
 
-2) Check your your alternate IceStorm loader with "AlchitryOriginal.bin":
-Plug the board and load the configuration file:
-
->iceprog AlchitryOriginal.bin 
-init..
-cdone: high
-reset..
-cdone: low
-flash ID: 0xEF 0x40 0x16 0x00
-file size: 135100
-erase 64kB sector at 0x000000..
-erase 64kB sector at 0x010000..
-erase 64kB sector at 0x020000..
-programming..
-reading..
-VERIFY OK
-cdone: high
-Bye.
-AlchitryBlink.bin
-leds should now display a wavy pattern.
-press the reset button should display a fixed alternate pattern.
+>iceprog AlchitryOriginal.bin  
+init..  
+cdone: high  
+reset..  
+cdone: low  
+flash ID: 0xEF 0x40 0x16 0x00  
+file size: 135100  
+erase 64kB sector at 0x000000..  
+erase 64kB sector at 0x010000..  
+erase 64kB sector at 0x020000..  
+programming..  
+reading..  
+VERIFY OK  
+cdone: high  
+Bye.  
+AlchitryBlink.bin  
+  
+leds should now display a wavy pattern.  
+press the reset button should display a fixed alternate pattern.  
 
 3) check the UART setup:
 
@@ -69,7 +70,7 @@ reading..
 VERIFY OK
 cdone: high
 Bye.
-
+  
 run the python3 script to send a series of 8 bits:
 
 
