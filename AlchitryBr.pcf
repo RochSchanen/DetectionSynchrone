@@ -1,0 +1,294 @@
+########################################################
+
+# file: AlchitryBr.pcf
+# content: pin configuration for Alchitry Br Board.
+# Created: 2020 august 29
+# Author: Roch Schanen
+# comments: pin constraints file for Alchitry Br device (prefixed "AlBr_")
+# unused pins are commented out to prevent warnings from the synthesiser tools
+
+########################################################
+
+
+
+
+
+# -------------------------------------------------
+#                 Alchitry Br Board 
+# -------------------------------------------------
+
+# ----------------------------
+#     BANK / CONNECTOR A
+# ----------------------------
+
+# location map:
+
+#############################################################
+#         BANK A              ##         BANK B             #
+#############################################################
+#  R 48 45 42 39 36 33 30 27  ## +V 48 45 42 39 36 33 30 27 # 1
+#  G 49 46 43 40 37 34 31 28  ##  G 49 46 43 40 37 34 31 28 # 2
+# +V  3  6  9 12 15 18 21 24  ## +V  3  6  9 12 15 18 21 24 # 3
+#  G  2  5  8 11 14 17 20 23  ##  G  2  5  8 11 14 17 20 23 # 4
+#############################################################
+#         BANK C              ##         BANK D             #
+#############################################################
+#  G 49 46 43 40  .  .  .  .  ##  G 49 46  . 40 37  .  . 28 # 1
+# +V 48 45 42 39  .  .  .  .  ## +V 48 45  . 39 36  .  . 27 # 2
+#  G  2  5  8 11  .  .  .  .  ##  G  2  5  .  . 14  .  . 23 # 3
+#  R  3  6  9  .  .  .  .  .  ## +V  3  6  .  . 15  .  . 24 # 4
+#############################################################
+#     1  2  3  4  5  6  7  8  ##     1  2  3  4  5  6  7  8 
+
+# assert  NAME             PIN    # FUNCTION        BANK
+
+# 6 pairs of LVDS Differential configurable Inputs/Outputs
+# each pair shares the same clock (input, output, enable)
+# One pair can also be configured as two separate single
+# ended input/output port. However, they will share the
+# same clock output, clock input and clock enable.
+# one port has an optional global input configuration.
+
+# set_io  AlBr_IO_P_00     N1     # IOL_25A         A 48
+# set_io  AlBr_IO_N_00     P1     # IOL_25B         A 49
+# set_io  AlBr_IO_P_01     K3     # IOL_18A         A 45
+# set_io  AlBr_IO_N_01     K4     # IOL_18B         A 46
+# set_io  AlBr_IO_P_02     H1     # IOL_14A_GBIN6   A 42
+# set_io  AlBr_IO_N_02     H3     # IOL_14B         A 43
+# set_io  AlBr_IO_P_03     H4     # IOL_10A         A 39
+# set_io  AlBr_IO_N_03     G4     # IOL_10B         A 40
+# set_io  AlBr_IO_P_04     F4     # IOL_9A          A 36
+# set_io  AlBr_IO_N_04     F3     # IOL_9B          A 37
+# set_io  AlBr_IO_P_05     D4     # IOL_8A          A 33
+# set_io  AlBr_IO_N_05     E4     # IOL_8B          A 34
+
+# 6 pairs of LVDS Differential configurable Inputs/Outputs
+# each pair shares the same clock (input, output, enable)
+# One pair can also be configured as two separate single
+# ended input/output port. However, they will share the
+# same clock output, clock input and clock enable.
+# one port has an optional global input configuration.
+
+# set_io  AlBr_IO_P_06     L1     # IOL_23A         A 3
+# set_io  AlBr_IO_N_06     M1     # IOL_23B         A 2
+# set_io  AlBr_IO_P_07     J3     # IOL_12A         A 6
+# set_io  AlBr_IO_N_07     J1     # IOL_12B         A 5
+# set_io  AlBr_IO_P_08     G3     # IOL_13A         A 9
+# set_io  AlBr_IO_N_08     G1     # IOL_13B_GBIN7   A 8
+# set_io  AlBr_IO_P_09     D1     # IOL_5A          A 12
+# set_io  AlBr_IO_N_09     E1     # IOL_5B          A 11
+# set_io  AlBr_IO_P_10     B1     # IOL_2A          A 15
+# set_io  AlBr_IO_N_10     C1     # IOL_2B          A 14
+# set_io  AlBr_IO_P_11     C3     # IOL_4A          A 18
+# set_io  AlBr_IO_N_11     D3     # IOL_4B          A 17
+
+# 8 single ended configurable LVCMOS ports
+
+# set_io  AlBr_IO_00       D5     # IOT_211         A 30
+# set_io  AlBr_IO_01       C4     # IOT_221         A 31
+# set_io  AlBr_IO_02       A2     # IOT_223         A 21
+# set_io  AlBr_IO_03       A1     # IOT_225         A 20
+
+# set_io  AlBr_IO_04       A5     # IOT_208         A 27
+# set_io  AlBr_IO_05       C5     # IOT_212         A 28
+# set_io  AlBr_IO_06       A4     # IOT_219         A 24
+# set_io  AlBr_IO_07       A3     # IOT_222         A 23
+
+# ----------------------------
+#     BANK / CONNECTOR B
+# ----------------------------
+
+# location map:
+
+#############################################################
+#         BANK A              ##         BANK B             #
+#############################################################
+#  R 48 45 42 39 36 33 30 27  ## +V 48 45 42 39 36 33 30 27 # 1
+#  G 49 46 43 40 37 34 31 28  ##  G 49 46 43 40 37 34 31 28 # 2
+# +V  3  6  9 12 15 18 21 24  ## +V  3  6  9 12 15 18 21 24 # 3
+#  G  2  5  8 11 14 17 20 23  ##  G  2  5  8 11 14 17 20 23 # 4
+#############################################################
+#         BANK C              ##         BANK D             #
+#############################################################
+#  G 49 46 43 40  .  .  .  .  ##  G 49 46  . 40 37  .  . 28 # 1
+# +V 48 45 42 39  .  .  .  .  ## +V 48 45  . 39 36  .  . 27 # 2
+#  G  2  5  8 11  .  .  .  .  ##  G  2  5  .  . 14  .  . 23 # 3
+#  R  3  6  9  .  .  .  .  .  ## +V  3  6  .  . 15  .  . 24 # 4
+#############################################################
+#     1  2  3  4  5  6  7  8  ##     1  2  3  4  5  6  7  8 
+
+# assert  NAME           PIN    # FUNCTION        BANK
+
+# 8 single ended configurable LVCMOS ports
+
+# set_io  AlBr_IO_08     C7     # IOT_200         B 48
+# set_io  AlBr_IO_09     D7     # IOT_202         B 45
+# set_io  AlBr_IO_10     D10    # IOT_177         B 42
+# set_io  AlBr_IO_11     C12    # IOT_172         B 39
+# set_io  AlBr_IO_12     D12    # IOR_160         B 36
+# set_io  AlBr_IO_13     F11    # IOR_144         B 33
+# set_io  AlBr_IO_14     G12    # IOR_129         B 30
+# set_io  AlBr_IO_15     H11    # IOR_128         B 27
+
+# 8 single ended configurable LVCMOS ports
+
+# set_io  AlBr_IO_16     C6     # IOT_206         B 49
+# set_io  AlBr_IO_17     D6     # IOT_207         B 46
+# set_io  AlBr_IO_18     D9     # IOT_188         B 43
+# set_io  AlBr_IO_19     C11    # IOT_174         B 40
+# set_io  AlBr_IO_20     D11    # IOT_178         B 37
+# set_io  AlBr_IO_21     E11    # IOR_146         B 34
+# set_io  AlBr_IO_22     F12    # IOR_137         B 31
+# set_io  AlBr_IO_23     G11    # IOR_136         B 28
+
+# 8 single ended configurable LVCMOS ports
+# including two port with optional global input (global buffer)
+
+# set_io  AlBr_IO_24     A7     # IOT_197_GBIN1   B 3
+# set_io  AlBr_IO_25     A11    # IOT_179         B 6
+# set_io  AlBr_IO_26     C10    # IOT_186         B 9
+# set_io  AlBr_IO_27     B14    # IOR_161         B 12
+# set_io  AlBr_IO_28     D14    # IOR_152         B 15
+# set_io  AlBr_IO_29     E12    # IOR_147         B 18
+# set_io  AlBr_IO_30     G14    # IOR_141_GBIN2   B 21
+# set_io  AlBr_IO_31     J12    # IOR_118         B 24 
+
+# 8 single ended configurable LVCMOS ports
+# including two port with optional global input (global buffer)
+
+# set_io  AlBr_IO_32     A6     # IOT_198_GBIN0   B 2
+# set_io  AlBr_IO_33     A10    # IOT_181         B 5
+# set_io  AlBr_IO_34     C9     # IOT_190         B 8
+# set_io  AlBr_IO_35     A12    # IOT_170         B 11
+# set_io  AlBr_IO_36     C14    # IOR_154         B 14
+# set_io  AlBr_IO_37     E14    # IOR_148         B 17
+# set_io  AlBr_IO_38     F14    # IOR_140_GBIN3   B 20
+# set_io  AlBr_IO_39     H12    # IOR_120         B 23
+
+
+# ----------------------------
+#     BANK / CONNECTOR C
+# ----------------------------
+
+# location map:
+
+#############################################################
+#         BANK A              ##         BANK B             #
+#############################################################
+#  R 48 45 42 39 36 33 30 27  ## +V 48 45 42 39 36 33 30 27 # 1
+#  G 49 46 43 40 37 34 31 28  ##  G 49 46 43 40 37 34 31 28 # 2
+# +V  3  6  9 12 15 18 21 24  ## +V  3  6  9 12 15 18 21 24 # 3
+#  G  2  5  8 11 14 17 20 23  ##  G  2  5  8 11 14 17 20 23 # 4
+#############################################################
+#         BANK C              ##         BANK D             #
+#############################################################
+#  G 49 46 43 40  .  .  .  .  ##  G 49 46  . 40 37  .  . 28 # 1
+# +V 48 45 42 39  .  .  .  .  ## +V 48 45  . 39 36  .  . 27 # 2
+#  G  2  5  8 11  .  .  .  .  ##  G  2  5  .  . 14  .  . 23 # 3
+#  R  3  6  9  .  .  .  .  .  ## +V  3  6  .  . 15  .  . 24 # 4
+#############################################################
+#     1  2  3  4  5  6  7  8  ##     1  2  3  4  5  6  7  8 
+
+# assert  NAME           PIN    # FUNCTION        BANK
+
+# 4 single ended configurable LVCMOS ports
+
+# set_io  AlBr_IO_40     P2     # IOB_56          C 49
+# set_io  AlBr_IO_41     P4     # IOB_73          C 46
+# set_io  AlBr_IO_42     L6     # IOB_78          C 43
+# set_io  AlBr_IO_43     P9     # IOB_89          C 40
+
+# 4 single ended configurable LVCMOS ports
+# including 1 port for an optional cold boot selector (bit 1)
+
+# set_io  AlBr_IO_44     P3     # IOB_59          C 48
+# set_io  AlBr_IO_45     P5     # IOB_74          C 45
+# set_io  AlBr_IO_46     L8     # IOB_87          C 42
+# set_io  AlBr_IO_47     P10    # IOB_104_CBSEL1  C 39
+
+# 4 single ended configurable LVCMOS ports
+# including 1 port for an optional cold boot selector (bit 0)
+
+# set_io  AlBr_IO_48     M3     # IOB_64          C 2
+# set_io  AlBr_IO_49     L4     # IOB_72          C 5
+# set_io  AlBr_IO_50     M6     # IOB_77          C 8
+# set_io  AlBr_IO_51     L9     # IOB_103_CBSEL0  C 11
+
+# 3 single ended configurable LVCMOS ports
+
+# set_io  AlBr_IO_52     M4     # IOB_63          C 3
+# set_io  AlBr_IO_53     L5     # IOB_71          C 6
+# set_io  AlBr_IO_54     M7     # IOB_79          C 9
+
+# ----------------------------
+#     BANK / CONNECTOR D
+# ----------------------------
+
+# location map:
+
+#############################################################
+#         BANK A              ##         BANK B             #
+#############################################################
+#  R 48 45 42 39 36 33 30 27  ## +V 48 45 42 39 36 33 30 27 # 1
+#  G 49 46 43 40 37 34 31 28  ##  G 49 46 43 40 37 34 31 28 # 2
+# +V  3  6  9 12 15 18 21 24  ## +V  3  6  9 12 15 18 21 24 # 3
+#  G  2  5  8 11 14 17 20 23  ##  G  2  5  8 11 14 17 20 23 # 4
+#############################################################
+#         BANK C              ##         BANK D             #
+#############################################################
+#  G 49 46 43 40  .  .  .  .  ##  G 49 46  . 40 37  .  . 28 # 1
+# +V 48 45 42 39  .  .  .  .  ## +V 48 45  . 39 36  .  . 27 # 2
+#  G  2  5  8 11  .  .  .  .  ##  G  2  5  .  . 14  .  . 23 # 3
+#  R  3  6  9  .  .  .  .  .  ## +V  3  6  .  . 15  .  . 24 # 4
+#############################################################
+#     1  2  3  4  5  6  7  8  ##     1  2  3  4  5  6  7  8 
+
+# assert  NAME             PIN    # FUNCTION        BANK
+
+# LED ports are connected to ground through the leds and 330 Ohms
+# resistors. The Alchitry Cu provides a voltage # of +3.3V to all
+# io banks. Leds are active when io port are high. Current
+# consumption is 10 mA per diode.
+
+# set_io  AlBr_LED0        J11    # IOR_119         D 49
+# set_io  AlBr_LED1        K11    # IOR_116         D 48
+# set_io  AlBr_LED2        K12    # IOR_115         D 2
+# set_io  AlBr_LED3        K14    # IOR_117         D 3
+# set_io  AlBr_LED4        L12    # IOR_111         D 46
+# set_io  AlBr_LED5        L14    # IOR_114         D 45
+# set_io  AlBr_LED6        M12    # IOR_109         D 5
+# set_io  AlBr_LED7        N14    # IOR_112         D 6
+
+# Clock signal is 100MHz and uses a ASFLMB-100.000MHZ-LC-T
+
+# set_io  AlBr_CLOCK       P7     # IOB_81_GBIN5    D 40
+
+# The reset button grounds a pull-up resistor (10 KOhms)
+# permanently connected to the reset port. The reset signal
+# is normally high. The reset signal is low only when the
+# button is pressed. check for re-bounces.
+
+# set_io  AlBr_RESET       P8     # IOB_82_GBIN4    D 39
+
+# the FT2232HQ PORT B output pin BDBUS0 and BDBUS1 are used
+# as UART signals and are directly connected to the FPGA.
+
+# set_io  AlBr_UART_TX     M9     # IOB_91          D 14
+# set_io  AlBr_UART_RX     P14    # IOR_110         D 15
+
+# The following ports are all connected to PORT A of the
+# FT2232HQ and are used to load the SPI_FLASH-X25XXSMD1
+# with the FPGA configuration data and to configure
+# the FPGA.
+
+# CONFIG PORT:
+
+# set_io  AlBr_CDONE       M10    # CDONE           D 37
+# set_io  AlBr_CRESET      L10    # CRESET          D 36
+
+# SPI PORT:
+
+# set_io  AlBr_SS          P13    # IOB_108_SS      D 28
+# set_io  AlBr_SCK         P12    # IOB_107_SCK     D 27
+# set_io  AlBr_MISO        P11    # IOB_106_SDI     D 23
+# set_io  AlBr_MOSI        M11    # IOB_105_SDO     D 24

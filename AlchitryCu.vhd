@@ -24,7 +24,7 @@ use ieee.numeric_std.all;
 
 entity AlchitryCu is
     port(   AlIo_LED00 : out   std_logic;
-            AlIo_BTN0  : inout std_ulogic;
+            AlIo_BTN1  : inout std_ulogic;
             AlCu_CLOCK : in    std_logic);
 end entity AlchitryCu;
 
@@ -67,7 +67,7 @@ begin
         port map (clk, pld, trg);
     -- instanciate ipd
     pid_inst : ipd
-        port map (pld, trg, AlIo_BTN0, AlIo_LED00);
+        port map (pld, trg, AlIo_BTN1, AlIo_LED00);
 -- done
 end architecture arch;
 
