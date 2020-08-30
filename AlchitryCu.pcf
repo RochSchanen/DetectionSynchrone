@@ -24,14 +24,14 @@
 # io banks. Leds are active when io port are high. Current
 # consumption is 10 mA per diode.
 
-# set_io  AlCu_LED_0     J11    # IOR_119
-# set_io  AlCu_LED_1     K11    # IOR_116
-# set_io  AlCu_LED_2     K12    # IOR_115
-# set_io  AlCu_LED_3     K14    # IOR_117
-# set_io  AlCu_LED_4     L12    # IOR_111
-# set_io  AlCu_LED_5     L14    # IOR_114
-# set_io  AlCu_LED_6     M12    # IOR_109
-# set_io  AlCu_LED_7     N14    # IOR_112
+set_io  AlCu_LED_0     J11    # IOR_119
+set_io  AlCu_LED_1     K11     # IOR_116
+set_io  AlCu_LED_2     K12    # IOR_115
+set_io  AlCu_LED_3     K14    # IOR_117
+set_io  AlCu_LED_4     L12    # IOR_111
+set_io  AlCu_LED_5     L14    # IOR_114
+set_io  AlCu_LED_6     M12    # IOR_109
+set_io  AlCu_LED_7     N14    # IOR_112
 
 # Clock signal is 100MHz and uses a ASFLMB-100.000MHZ-LC-T
 
@@ -42,10 +42,10 @@ set_io  AlCu_CLOCK     P7     # IOB_81_GBIN5
 # is normally high. The reset signal is low only when the
 # button is pressed. check for re-bounces.
 
-# set_io  AlCu_RESET     P8     # IOB_82_GBIN4
+set_io  AlCu_RESET     P8     # IOB_82_GBIN4
 
 # the FT2232HQ PORT B output pin BDBUS0 and BDBUS1 are used
 # as UART signals and are directly connected to the FPGA.
 
-# set_io  AlCu_UART_TX   M9     # IOB_91
-# set_io  AlCu_UART_RX   P14    # IOR_110
+set_io  AlCu_UART_TX   M9     # IOB_91
+set_io  AlCu_UART_RX   P14    # IOR_110

@@ -22,20 +22,11 @@ use ieee.std_logic_1164.all;
 -------------------------------------------------
 
 entity placc is
-
-    -- default size is set at 4 bits
-    generic (size : integer := 4);
-
-    port (
-        -- clear (reset) active low
-        r : in  std_logic;
-
-        -- clock (trigger) rising edge
-        t : in  std_logic;
-
-        -- data output (accumulator)
-        a : out std_logic_vector(size-1 downto 0)
-    );
+    generic (size : integer := 4); -- accumulator size
+    port (r : in  std_logic;       -- reset (active low)
+          t : in  std_logic;       -- trigger (rising edge)
+          -- accumulator output value:
+          a : out std_logic_vector(size-1 downto 0));
 
 end entity placc;
 

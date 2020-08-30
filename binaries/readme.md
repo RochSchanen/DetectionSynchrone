@@ -1,6 +1,7 @@
 # /binaries/readme.md
 
-Binary files used to test hardware problems.
+Binary files used to test hardware installation.  
+The binary files have been tested to work on the AlchitryCu.
 
 	1) Check Alchitry loader with "AlchitryOriginal.bin"
 

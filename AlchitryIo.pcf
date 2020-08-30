@@ -36,31 +36,31 @@
 # assert  NAME           PIN    # FUNCTION        BANK
 
 set_io  AlIo_LED00     G14
-# set_io  AlIo_LED01     F14
-# set_io  AlIo_LED02     E12
-# set_io  AlIo_LED03     E14
-# set_io  AlIo_LED04     D14
-# set_io  AlIo_LED05     C14
-# set_io  AlIo_LED06     B14
-# set_io  AlIo_LED07     A12
+set_io  AlIo_LED01     F14
+set_io  AlIo_LED02     E12
+set_io  AlIo_LED03     E14
+set_io  AlIo_LED04     D14
+set_io  AlIo_LED05     C14
+set_io  AlIo_LED06     B14
+set_io  AlIo_LED07     A12
 
-# set_io  AlIo_LED08     C10
-# set_io  AlIo_LED09     C9
-# set_io  AlIo_LED10     A11
-# set_io  AlIo_LED11     A10
-# set_io  AlIo_LED12     A7
-# set_io  AlIo_LED13     A6
-# set_io  AlIo_LED14     A4
-# set_io  AlIo_LED15     A3
+set_io  AlIo_LED08     C10
+set_io  AlIo_LED09     C9
+set_io  AlIo_LED10     A11
+set_io  AlIo_LED11     A10
+set_io  AlIo_LED12     A7
+set_io  AlIo_LED13     A6
+set_io  AlIo_LED14     A4
+set_io  AlIo_LED15     A3
 
-# set_io  AlIo_LED16     A2
-# set_io  AlIo_LED17     A1
-# set_io  AlIo_LED18     C3
-# set_io  AlIo_LED19     D3
-# set_io  AlIo_LED20     B1
-# set_io  AlIo_LED21     C1
-# set_io  AlIo_LED22     D1
-# set_io  AlIo_LED23     E1
+set_io  AlIo_LED16     A2
+set_io  AlIo_LED17     A1
+set_io  AlIo_LED18     C3
+set_io  AlIo_LED19     D3
+set_io  AlIo_LED20     B1
+set_io  AlIo_LED21     C1
+set_io  AlIo_LED22     D1
+set_io  AlIo_LED23     E1
 
 # --------------
 
@@ -82,21 +82,21 @@ set_io  AlIo_LED00     G14
 
 # segment display cathodes (ground)
 
-# set_io AlIo_LEDA       J1
-# set_io AlIo_LEDB       J3
-# set_io AlIo_LEDC       N1
-# set_io AlIo_LEDD       K4
-# set_io AlIo_LEDE       K3
-# set_io AlIo_LEDF       L1
-# set_io AlIo_LEDG       M1
-# set_io AlIo_LEDP       P1
+set_io AlIo_LEDA       J1
+set_io AlIo_LEDB       J3
+set_io AlIo_LEDC       N1
+set_io AlIo_LEDD       K4
+set_io AlIo_LEDE       K3
+set_io AlIo_LEDF       L1
+set_io AlIo_LEDG       M1
+set_io AlIo_LEDP       P1
 
 # segment display anodes (select +3.3V)
 
-# set_io AlIo_SEL0       G3
-# set_io AlIo_SEL1       G1
-# set_io AlIo_SEL2       H1
-# set_io AlIo_SEL3       H3
+set_io AlIo_SEL0       G3
+set_io AlIo_SEL1       G1
+set_io AlIo_SEL2       H1
+set_io AlIo_SEL3       H3
 
 # --------------
 #   switches
@@ -114,32 +114,32 @@ set_io  AlIo_LED00     G14
 # 23 22 21 20 19 18 17 16 15 14 13 12 11 10 09 08 07 06 05 04 03 02 01 00 #
 ###########################################################################
 
-# set_io AlIo_SW00       G12    -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW01       F12    -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW02       F11    -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW03       E11    -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW04       D12    -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW05       D11    -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW06       C12    -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW07       C11    -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW00       G12    -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW01       F12    -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW02       F11    -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW03       E11    -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW04       D12    -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW05       D11    -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW06       C12    -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW07       C11    -io_std SB_LVCMOS -pullup no
 
-# set_io AlIo_SW08       D10    -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW09       D9     -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW10       D7     -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW11       D6     -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW12       C7     -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW13       C6     -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW14       A5     -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW15       C5     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW08       D10    -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW09       D9     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW10       D7     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW11       D6     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW12       C7     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW13       C6     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW14       A5     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW15       C5     -io_std SB_LVCMOS -pullup no
 
-# set_io AlIo_SW16       D5     -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW17       C4     -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW18       D4     -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW19       E4     -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW20       F4     -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW21       F3     -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW22       H4     -io_std SB_LVCMOS -pullup no
-# set_io AlIo_SW23       G4     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW16       D5     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW17       C4     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW18       D4     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW19       E4     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW20       F4     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW21       F3     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW22       H4     -io_std SB_LVCMOS -pullup no
+set_io AlIo_SW23       G4     -io_std SB_LVCMOS -pullup no
 
 # --------------
 #    buttons
@@ -161,8 +161,8 @@ set_io  AlIo_LED00     G14
 #     2     #
 #############
 
-# set_io AlIo_BTN0       G11    -io_std SB_LVCMOS -pullup no
+set_io AlIo_BTN0       G11    -io_std SB_LVCMOS -pullup no
 set_io AlIo_BTN1       H11    -io_std SB_LVCMOS -pullup no
-# set_io AlIo_BTN2       H12    -io_std SB_LVCMOS -pullup no
-# set_io AlIo_BTN3       J12    -io_std SB_LVCMOS -pullup no
-# set_io AlIo_BTN4       P2     -io_std SB_LVCMOS -pullup no
+set_io AlIo_BTN2       H12    -io_std SB_LVCMOS -pullup no
+set_io AlIo_BTN3       J12    -io_std SB_LVCMOS -pullup no
+set_io AlIo_BTN4       P2     -io_std SB_LVCMOS -pullup no

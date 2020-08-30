@@ -24,25 +24,13 @@ use ieee.std_logic_1164.all;
 
 -------------------------------------------------
 
-entity fifobuf is
-    
-    -- default size generates a single wire
-    generic (size : integer := 0);
-    
-    port(
-        -- clear (reset) active low
-        r : in  std_logic;
-    
-        -- clock (trigger) rising edge
-        t : in  std_logic;
-    
-        -- data inputs (1 bit in)
-        i : in  std_logic;
-    
-        -- data outputs (1 bit out)
-        o : out std_logic
-    );
-end entity fifobuf;
+    component fifobuf is
+    generic (size : integer := 0); -- buffer size
+    port(r : in  std_logic;        -- reset (active low)
+         t : in  std_logic;        -- trigger (rising edge)
+         i : in  std_logic;        -- data in
+         o : out std_logic);       -- data out
+    end component fifobuf;
 
 -------------------------------------------------
 

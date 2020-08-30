@@ -22,19 +22,10 @@ use ieee.std_logic_1164.all;
 -------------------------------------------------
 
 entity addsync is
-    port (
-        -- clear (reset) active low
-        r : in  std_logic;
-        
-        -- clock (trigger) rising edge
-        t : in  std_logic;
-        
-        -- data inputs (a, b and carry)
-        a, b, c : in  std_logic;
-        
-        -- data outputs (sum and carry)
-        s, o    : out std_logic
-    );
+    port (r : in  std_logic;        -- reset (active low)
+          t : in  std_logic;        -- trigger (rising edge)
+          a, b, c : in  std_logic;  -- a, b and carry in
+          s, o    : out std_logic); -- sum and carry out
 end entity addsync;
 
 -------------------------------------------------
