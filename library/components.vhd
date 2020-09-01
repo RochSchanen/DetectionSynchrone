@@ -34,11 +34,11 @@ package components is
     -- fifobuf.vhd
 
 	component fifobuf is
-    generic (size : integer := 0); -- buffer size
-    port(r : in  std_logic; 	   -- reset (active low)
-		 t : in  std_logic;        -- trigger (rising edge)
-         i : in  std_logic;        -- data in
-         o : out std_logic);       -- data out
+	    generic (size : integer := 0); -- buffer size
+	    port(r : in  std_logic; 	   -- reset (active low)
+			 t : in  std_logic;        -- trigger (rising edge)
+	         i : in  std_logic;        -- data in
+	         o : out std_logic);       -- data out
 	end component fifobuf;
 
 	-- addsync.vhd
@@ -50,14 +50,14 @@ package components is
 	          s, o    : out std_logic); -- sum and carry out
 	end component addsync;
 
-	component placc is
-	    generic (size : integer := 4); -- accumulator size
-	    port (r : in  std_logic;       -- reset (active low)
-	          t : in  std_logic;       -- trigger (rising edge)
-	          -- accumulator output value:
-	          a : out std_logic_vector(size-1 downto 0));
+	-- placc.vhd
 
-	end component placc;
+    component placc is
+        generic (size : integer := 4); -- accumulator size
+        port (r : in  std_logic;       -- reset (active low)
+              t : in  std_logic;       -- trigger (rising edge)
+              a : out std_logic_vector(size-1 downto 0) );
+    end component placc;
 
 end package components;
 

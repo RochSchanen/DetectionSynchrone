@@ -140,4 +140,45 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 
 - update and split pins constraint files.
 - update binaries and add readme file.
+- cleanup project files, create constraint directory.
+- move tests to benches directory.
 
+2020 08 30
+- checked ramp using homemade resistance network at highest speed:
+    580 KHz ramps (10 ns * 256 steps) signal.
+    main noise is from settling of digits.
+    also middle step (Most significant bit) would need better calibration
+    (see pictures)
+- checked ramp using DAC08CP:
+    Good linearity (better than my homemade network).
+    However, spikes visible at digital updates.
+    We need a buffering DAC (internals should be better at managing spikes).
+    Also, at higher rates, visible time constant for the output to settle.
+    Q: Is it possible to filter the spikes?
+    Q: Does the time constant matter for sinusoidal shape? (only a small phase shift).
+
+- check for other DACs:
+    
+    MAX5181/MAX5184 looks very interresting (40MSps, 10bits, 1024pts)
+    Current output for MAX5181; voltage output for MAX5184.
+    Analog Positive Supply, 2.7V to 3.3V
+    Clock Input to validate data .
+    optional 1.2V internal reference.
+    £4
+
+    MAX7545 is a multiplying DAC (Vref x Digital) (12bits, 4096pts)
+    WR input to latch the input data.
+    but fairly slow to update: ~100 ns.
+    £8
+
+    MAX5883 (200Msps, 12Bits, 4096pts ) is promissing if LVDS implemented easily.
+    super fast
+    differential clock input (CLKP, CLKN): might require some testing.
+    optional 1.2V internal reference.
+    £7 (351 In stock)
+
+    LTC1666/LTC1667/LTC1668 very promissing... (www.digikey.com)
+    £9 (no longer stocked...)
+    LTC1666CG#PBF: Digital to Analogue Converter, 12 bit, 50 MSPS, 4.75V to 5.25V, SSOP, 28 Pins
+
+- 

@@ -19,6 +19,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+library work;
+use work.components.all;
+
 -------------------------------------------------
 
 entity placc is
@@ -27,23 +30,11 @@ entity placc is
           t : in  std_logic;       -- trigger (rising edge)
           -- accumulator output value:
           a : out std_logic_vector(size-1 downto 0));
-
 end entity placc;
 
 -------------------------------------------------
 
 architecture placc_arch of placc is
-
-    -- components
-
-    component addsync
-        port (r,t,a,b,c:in std_logic; s,o:out std_logic);
-    end component addsync;
-
-    component fifobuf
-        generic (size:integer);
-        port(r,t,i:in std_logic; o:out std_logic);
-    end component fifobuf;
 
     -- signals
     signal cc : std_logic_vector(size   downto 0); -- carry lines
