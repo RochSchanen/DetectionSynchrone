@@ -56,7 +56,7 @@ begin
 
     placc1_inst : placc
         generic map(9)
-        port map('1', clk, acc);
+        port map('1', clk, "000000010", acc);
 
     -- instanciate srom
 

@@ -11,9 +11,12 @@
 
 -- ########################################################
 
--- test synthesis using ghdl:
--- >ghdl -a placc.vhd
 
+-- todo: do we need the asynchronous reset?
+
+
+-------------------------------------------------
+--                PLACC
 -------------------------------------------------
 
 library ieee;
@@ -28,8 +31,8 @@ entity placc is
     generic (size : integer := 4); -- accumulator size
     port (r : in  std_logic;       -- reset (active low)
           t : in  std_logic;       -- trigger (rising edge)
-          -- accumulator output value:
-          a : out std_logic_vector(size-1 downto 0));
+          i : in  std_logic_vector(size-1 downto 0);  -- increment value
+          o : out std_logic_vector(size-1 downto 0)); -- accumulator output
 end entity placc;
 
 -------------------------------------------------
@@ -40,10 +43,6 @@ architecture placc_arch of placc is
     signal cc : std_logic_vector(size   downto 0); -- carry lines
     signal ii : std_logic_vector(size-1 downto 0); -- adders input
     signal oo : std_logic_vector(size-1 downto 0); -- adders ouput
-
-    -- accumulator increment                                        !!! move to input
-    signal ss : std_logic_vector(size-1 downto 0):=
-        (0 => '1', 1 => '0', others => '0');
 
 begin
 
@@ -60,14 +59,14 @@ begin
 
         ipl : fifobuf
             generic map (n)
-            port map (r, t, ss(n), ii(n));
+            port map (r, t, i(n), ii(n));
 
         add : addsync
             port map (r, t, ii(n), oo(n), cc(n), oo(n), cc(n+1));
 
         opl : fifobuf
             generic map (size-n)
-            port map (r, t, oo(n), a(n));
+            port map (r, t, oo(n), o(n));
 
     end generate NETWORK;
 

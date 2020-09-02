@@ -52,12 +52,13 @@ package components is
 
 	-- placc.vhd
 
-    component placc is
-        generic (size : integer := 4); -- accumulator size
-        port (r : in  std_logic;       -- reset (active low)
-              t : in  std_logic;       -- trigger (rising edge)
-              a : out std_logic_vector(size-1 downto 0) );
-    end component placc;
+	component placc is
+	    generic (size : integer := 4); -- accumulator size
+	    port (r : in  std_logic;       -- reset (active low)
+	          t : in  std_logic;       -- trigger (rising edge)
+	          i : in  std_logic_vector(size-1 downto 0);  -- increment value
+	          o : out std_logic_vector(size-1 downto 0)); -- accumulator output
+	end component placc;
 
 	-- srom.vhd
 

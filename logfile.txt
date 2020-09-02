@@ -181,4 +181,17 @@ in the eprom that configures the FPGA (AlchitryCu specific):
     £9 (no longer stocked...)
     LTC1666CG#PBF: Digital to Analogue Converter, 12 bit, 50 MSPS, 4.75V to 5.25V, SSOP, 28 Pins
 
+2020 09 02
+- use SB_RAM512x8 to store sinusoidal data. 512 steps with 8 bits resolution.
+- build sinusoidal data using python initrom.py.
+- add srom to library. check sinusoidal signal at 50KHz. OK.
+- still some spikes from digital-to-analogue convertions
+- largest spike for the most significant bit transitions:
+    for example from 01111111 to 10000000. This is because the dynamic of the transition is not balanced.
+    I don't know how it is corrected in DACS or even if it can be corrected.
+    but it can certainly be filtered out.
+    512 steps is 512 times the main signal frequency.
+    it must be easy to filter.
+    we should see with the fast DAC.
+- move accumulator increment to input port in placc.vhd.
 - 
