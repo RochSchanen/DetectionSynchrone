@@ -37,11 +37,15 @@ end entity AlchitryCu;
 
 architecture arch of AlchitryCu is
 
+    constant ACCSIZE : integer := 4;
+    constant CNTSIZE : integer := 9;
+
     -- signals
 
-    signal clk : std_logic;         -- slower clock
-    signal acc : std_logic_vector(8 downto 0);
+    signal clk : std_logic;
+    signal acc : std_logic_vector(CNTSIZE-1+ACCSIZE downto 0);
     signal o   : std_logic_vector(7 downto 0);
+    signal c   : std_logic;
 
 begin
 
@@ -54,14 +58,14 @@ begin
 
     -- instanciate accumulator
 
-    placc1_inst : placc
-        generic map(9)
-        port map('1', clk, "000000010", acc);
+    plnco1 : plnco
+        generic map(ACCSIZE, CNTSIZE)
+        port map('1', clk, "1011", acc, c);
 
     -- instanciate srom
 
     srom1 : srom
-        port map(acc, not clk, o);
+        port map(acc(CNTSIZE-1+ACCSIZE downto ACCSIZE), not clk, o);
 
     ---- output value
 

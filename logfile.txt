@@ -194,4 +194,9 @@ in the eprom that configures the FPGA (AlchitryCu specific):
     it must be easy to filter.
     we should see with the fast DAC.
 - move accumulator increment to input port in placc.vhd.
+- placc: add overload flag
+- create plcnt.vhd : pipelined counter.
+- create plnco.vhd : pipelined numerically-controlled oscillator.
+- test new NCO using accumulator 4 bits and counter 9 bits. ok.
+- frequency adjustable with fractional steps...
 - 

@@ -57,8 +57,33 @@ package components is
 	    port (r : in  std_logic;       -- reset (active low)
 	          t : in  std_logic;       -- trigger (rising edge)
 	          i : in  std_logic_vector(size-1 downto 0);  -- increment value
-	          o : out std_logic_vector(size-1 downto 0)); -- accumulator output
+	          o : out std_logic_vector(size-1 downto 0);  -- accumulator output
+	          c : out std_logic);                         -- overload (carry out)
 	end component placc;
+
+	-- plcnt.vhd
+
+	component plcnt is
+	    generic (size : integer := 4); -- accumulator size
+	    port (r : in  std_logic;       -- reset (active low)
+	          t : in  std_logic;       -- trigger (rising edge)
+	          i : in  std_logic;       -- enable counter (carry in)
+	          o : out std_logic_vector(size-1 downto 0);
+	          c : out std_logic);      -- overload (carry out)
+	end component plcnt;
+
+	-- plnco.vhd
+
+	component plnco is
+	    generic (
+	        accsize : integer := 4;  -- accumulator size
+	        cntsize : integer := 4); -- counter size
+	    port (r : in  std_logic;     -- reset (active low)
+	          t : in  std_logic;     -- trigger (rising edge)
+	          i : in std_logic_vector(accsize-1 downto 0);
+	          o : out std_logic_vector(cntsize+accsize-1 downto 0);
+	          c : out std_logic);    -- overload (carry out)
+	end component plnco;
 
 	-- srom.vhd
 
