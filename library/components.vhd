@@ -59,6 +59,15 @@ package components is
               a : out std_logic_vector(size-1 downto 0) );
     end component placc;
 
+	-- srom.vhd
+
+	component srom is
+	    port(        
+	        a : in  std_logic_vector (8 downto 0);   -- address (9 bits)
+	        t : in  std_logic;                       -- trigger (rising edge)
+	        o : out std_logic_vector (7 downto 0));  -- data (8 bits)
+	end component srom;
+	
 end package components;
 
 -------------------------------------------------
