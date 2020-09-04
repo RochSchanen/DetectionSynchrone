@@ -140,17 +140,17 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 
 - update and split pins constraint files.
 - update binaries and add readme file.
-- cleanup project files, create constraint directory.
+- clean-up project files, create constraint directory.
 - move tests to benches directory.
 
 2020 08 30
-- checked ramp using homemade resistance network at highest speed:
+- checked ramp using home-made resistance network at highest speed:
     580 KHz ramps (10 ns * 256 steps) signal.
     main noise is from settling of digits.
     also middle step (Most significant bit) would need better calibration
     (see pictures)
 - checked ramp using DAC08CP:
-    Good linearity (better than my homemade network).
+    Good linearity (better than my home-made network).
     However, spikes visible at digital updates.
     We need a buffering DAC (internals should be better at managing spikes).
     Also, at higher rates, visible time constant for the output to settle.
@@ -159,7 +159,7 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 
 - check for other DACs:
     
-    MAX5181/MAX5184 looks very interresting (40MSps, 10bits, 1024pts)
+    MAX5181/MAX5184 looks very interesting (40MSps, 10bits, 1024pts)
     Current output for MAX5181; voltage output for MAX5184.
     Analog Positive Supply, 2.7V to 3.3V
     Clock Input to validate data .
@@ -171,13 +171,13 @@ in the eprom that configures the FPGA (AlchitryCu specific):
     but fairly slow to update: ~100 ns.
     £8
 
-    MAX5883 (200Msps, 12Bits, 4096pts ) is promissing if LVDS implemented easily.
+    MAX5883 (200Msps, 12Bits, 4096pts ) is promising if LVDS implemented easily.
     super fast
     differential clock input (CLKP, CLKN): might require some testing.
     optional 1.2V internal reference.
     £7 (351 In stock)
 
-    LTC1666/LTC1667/LTC1668 very promissing... (www.digikey.com)
+    LTC1666/LTC1667/LTC1668 very promising... (www.digikey.com)
     £9 (no longer stocked...)
     LTC1666CG#PBF: Digital to Analogue Converter, 12 bit, 50 MSPS, 4.75V to 5.25V, SSOP, 28 Pins
 
@@ -185,7 +185,7 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 - use SB_RAM512x8 to store sinusoidal data. 512 steps with 8 bits resolution.
 - build sinusoidal data using python initrom.py.
 - add srom to library. check sinusoidal signal at 50KHz. OK.
-- still some spikes from digital-to-analogue convertions
+- still some spikes from digital-to-analogue conversions
 - largest spike for the most significant bit transitions:
     for example from 01111111 to 10000000. This is because the dynamic of the transition is not balanced.
     I don't know how it is corrected in DACS or even if it can be corrected.
@@ -199,4 +199,13 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 - create plnco.vhd : pipelined numerically-controlled oscillator.
 - test new NCO using accumulator 4 bits and counter 9 bits. ok.
 - frequency adjustable with fractional steps...
-- 
+
+2020 09 04
+- solder another SIL on the Alchitry Br.
+- use the 8 new ports to control an old fashion but good quality PM7545 DAC from Analog Devices.
+- the DAC is 12 bits width with a latch control (unused for now).
+- a output LM741 OPAMP is used to convert to a 6Vpp amplitude signal.
+- the much smaller digital noise is mostly eliminated using a 1.7uF ceramic and 10.3 Ohms resistor:
+    They form a first order low pass filter with cut-off frequency 9.1KHz.
+    this is too low for later purpose but improve the signal quality at the 382Hz test frequency.
+    
