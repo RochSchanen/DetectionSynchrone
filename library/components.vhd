@@ -87,14 +87,13 @@ package components is
 
 	-- srom.vhd
 
-	component srom is
+	component USIN102416 is
 	    port(        
-	        a : in  std_logic_vector (8 downto 0);   -- address (9 bits)
+	        a : in  std_logic_vector (9 downto 0);   -- address (10 bits)
 	        t : in  std_logic;                       -- trigger (rising edge)
-	        o : out std_logic_vector (7 downto 0));  -- data (8 bits)
-	end component srom;
+	        o : out std_logic_vector (16 downto 0)); -- data (16 bits)
+	end component USIN102416;
 	
 end package components;
 
 -------------------------------------------------
-
