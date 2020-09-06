@@ -25,11 +25,11 @@ use ieee.std_logic_1164.all;
 -------------------------------------------------
 
 entity fifobuf is
-    generic (size : integer := 0); -- buffer size
-    port(r : in  std_logic;        -- reset (active low)
-         t : in  std_logic;        -- trigger (rising edge)
-         i : in  std_logic;        -- data in
-         o : out std_logic);       -- data out
+    generic (size : integer := 0);  -- buffer size
+    port (r : in  std_logic;        -- reset (active low)
+          t : in  std_logic;        -- trigger (rising edge)
+          i : in  std_logic;        -- data in
+          o : out std_logic);       -- data out
 end entity fifobuf;
 
 -------------------------------------------------

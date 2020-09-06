@@ -27,9 +27,9 @@ use sb_ice40_components_syn.components.all;
 -------------------------------------------------
 
 entity USIN102416 is
-    port(a : in  std_logic_vector (9 downto 0);   -- address (10 bits)
-         t : in  std_logic;                       -- trigger (rising edge)
-         o : out std_logic_vector (15 downto 0)); -- data    (16 bits)
+    port (a : in  std_logic_vector (9 downto 0);   -- address (10 bits)
+          t : in  std_logic;                       -- trigger (rising edge)
+          o : out std_logic_vector (15 downto 0)); -- data    (16 bits)
 end entity USIN102416;
 
 -------------------------------------------------

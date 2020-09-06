@@ -19,26 +19,26 @@ use ieee.numeric_std.all;
 -------------------------------------------------
 
 entity clkdiv is
-    generic (SIZE : integer := 8); -- binary counter size
-    port(cli : in  std_logic;      -- input clock
-         clo : out std_logic);     -- output clock
+    generic (SIZE : integer := 8);  -- binary counter size
+    port (i : in  std_logic;        -- input clock
+          o : out std_logic);       -- output clock
 end entity;
 
 -------------------------------------------------
 
 architecture clkdiv_arch of clkdiv is
     -- define counter
-    signal counter : std_logic_vector(SIZE-1 downto 0);
+    signal c : std_logic_vector(SIZE-1 downto 0);
 begin
     -- increment counter on input clock rising edge
-    process (cli)
+    process (i)
     begin
-        if rising_edge(cli) then
+        if rising_edge(i) then
             -- do conversions and increment counter
-            counter <= std_logic_vector(unsigned(counter)+1);
+            c <= std_logic_vector(unsigned(c)+1);
         end if;
     end process;
     -- output clock value
-    clo <= counter(SIZE-1);
+    o <= c(SIZE-1);
 -- done 
 end architecture clkdiv_arch;

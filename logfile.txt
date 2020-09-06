@@ -213,5 +213,7 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 - extend sin table
 - use from now USIN102416.vhd (1024 points and 16 bits precision)
 
-2020
+2020 09 06
 - clean up directories
+- create new component file uartr.vhd for reading UART data.
+- instantiate and test. OK.
