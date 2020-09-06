@@ -208,4 +208,10 @@ in the eprom that configures the FPGA (AlchitryCu specific):
 - the much smaller digital noise is mostly eliminated using a 1.7uF ceramic and 10.3 Ohms resistor:
     They form a first order low pass filter with cut-off frequency 9.1KHz.
     this is too low for later purpose but improve the signal quality at the 382Hz test frequency.
-    
+
+2020 09 05
+- extend sin table
+- use from now USIN102416.vhd (1024 points and 16 bits precision)
+
+2020
+- clean up directories

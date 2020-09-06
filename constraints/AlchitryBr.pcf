@@ -117,6 +117,8 @@ set_io  AlBr_IO_07       A3     # IOT_222         A 23
 
 # 8 single ended configurable LVCMOS ports
 
+# (SIL connector soldered to this series)
+
 set_io  AlBr_IO_08     C7     # IOT_200         B 48
 set_io  AlBr_IO_09     D7     # IOT_202         B 45
 set_io  AlBr_IO_10     D10    # IOT_177         B 42
@@ -152,6 +154,8 @@ set_io  AlBr_IO_31     J12    # IOR_118         B 24
 # 8 single ended configurable LVCMOS ports
 # including two port with optional global input (global buffer)
 
+# (SIL connector soldered to this series)
+
 set_io  AlBr_IO_32     A6     # IOT_198_GBIN0   B 2
 set_io  AlBr_IO_33     A10    # IOT_181         B 5
 set_io  AlBr_IO_34     C9     # IOT_190         B 8
@@ -160,8 +164,7 @@ set_io  AlBr_IO_36     C14    # IOR_154         B 14
 set_io  AlBr_IO_37     E14    # IOR_148         B 17
 set_io  AlBr_IO_38     F14    # IOR_140_GBIN3   B 20
 set_io  AlBr_IO_39     H12    # IOR_120         B 23
-
-
+                                                                                                                                                            
 # ----------------------------
 #     BANK / CONNECTOR C
 # ----------------------------
@@ -257,6 +260,8 @@ set_io  AlBr_LED7        N14    # IOR_112         D 6
 
 # Clock signal is 100MHz and uses a ASFLMB-100.000MHZ-LC-T
 
+# (SIL connector soldered to this one)
+
 set_io  AlBr_CLOCK       P7     # IOB_81_GBIN5    D 40
 
 # The reset button grounds a pull-up resistor (10 KOhms)
@@ -264,10 +269,14 @@ set_io  AlBr_CLOCK       P7     # IOB_81_GBIN5    D 40
 # is normally high. The reset signal is low only when the
 # button is pressed. check for re-bounces.
 
+# (SIL connector soldered to this one)
+
 set_io  AlBr_RESET       P8     # IOB_82_GBIN4    D 39
 
 # the FT2232HQ PORT B output pin BDBUS0 and BDBUS1 are used
 # as UART signals and are directly connected to the FPGA.
+
+# (SIL connector soldered to these two)
 
 set_io  AlBr_UART_TX     M9     # IOB_91          D 14
 set_io  AlBr_UART_RX     P14    # IOR_110         D 15
