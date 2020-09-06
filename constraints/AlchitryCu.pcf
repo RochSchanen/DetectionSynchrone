@@ -25,7 +25,7 @@
 # consumption is 10 mA per diode.
 
 set_io  AlCu_LED_0     J11    # IOR_119
-set_io  AlCu_LED_1     K11     # IOR_116
+set_io  AlCu_LED_1     K11    # IOR_116
 set_io  AlCu_LED_2     K12    # IOR_115
 set_io  AlCu_LED_3     K14    # IOR_117
 set_io  AlCu_LED_4     L12    # IOR_111

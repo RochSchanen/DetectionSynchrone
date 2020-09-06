@@ -63,7 +63,6 @@ for r in [RAM3, RAM2, RAM1, RAM0]:
 # comment:
 # run Python3:3.8.2 (default, Jul 16 2020, 14:00:26) 
 # [GCC 9.3.0]
-# make USIN102416.txt
 #         generic map (
 # INIT_0 => X"baaaaaaaaaaaaaaaaaaaaa999999999999999999999888888888888888888887",
 # INIT_1 => X"dddddddddddddddddcccccccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbbb",
