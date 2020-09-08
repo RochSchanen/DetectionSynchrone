@@ -1,8 +1,8 @@
 -- ########################################################
 
--- file: uartr.vhd
--- content: UART read (FPGA receives data)
--- Created: 2020 september 06
+-- file: uartw.vhd
+-- content: UART write (FPGA sending data)
+-- Created: 2020 september 08
 -- Author: Roch Schanen
 -- comments:
 
@@ -13,7 +13,7 @@
 
 
 -------------------------------------------------
---                   UARTR
+--                   UARTW
 -------------------------------------------------
 
 library ieee;
@@ -22,26 +22,26 @@ use ieee.numeric_std.all;
 
 -------------------------------------------------
 
-entity uartr is
+entity uartw is
     port (t : in  std_logic;                      -- clock (rising edge)
-          i : in  std_logic;                      -- data in (serial)
-          l : out std_logic;                      -- load (1 cycle)
-          o : out std_logic_vector (7 downto 0)); -- data out (one byte)
-end entity uartr;
+          i : in  std_logic_vector (7 downto 0);  -- data in (one byte)
+          l : in  std_logic;                      -- load (rising edge)
+          o : out std_logic);                     -- data out (serial)
+end entity uartw;
 
 -------------------------------------------------
 
 -- NOTE TO DO: maybe only clear the MSB of the counter                           !!!
 
-architecture uartr_arch of uartr is
+architecture uartw_arch of uartw is
 
     -- Finite State Machine (FSM) constants:
 
-    type ts is (sRdy, sStr, sRcv, sStp);
+    type ts is (sRdy, sStr, sSnd, sStp);
 
     -- - sRdy is for Ready
     -- - sStr is for Start signal
-    -- - sRcv is for Receiving
+    -- - sSnd is for Sending
     -- - sStp is for Stop signal
 
     -- state variable
@@ -60,7 +60,7 @@ architecture uartr_arch of uartr is
 
     begin
 
-        pUARTR : process (t)
+        pUARTW : process (t)
 
         begin
 
@@ -76,34 +76,34 @@ architecture uartr_arch of uartr is
 
                     when sRdy =>
 
-                        if i = '0' then    -- find level low
+                        if l = '1' then    -- find level high
                             s <= sStr;     --> go to start
-                        else               -- find level high
+                        else               -- find level low
                             s <= sRdy;     --> continue
                         end if;
                         
-                        c <= (others => '0'); -- keep counter  clear
-                        l <= '0';             -- keep load signal clear
-                        p <= 0;               -- keep pointer  clear 
+                        c <= (others => '0'); -- keep counter clear
+                        o <= '1';             -- keep ouput high
+                        p <=  0 ;             -- keep pointer clear 
 
                     ----------------
                     --    START
                     ----------------
                     
-                    -- (wait half a period = 64 clock cycles)
+                    -- (wait a full period with ouput low)
 
                     when sStr =>
 
-                        if c(6) = '1' then -- half period reached
-                            
-                            if i = '0' then           -- confirm start
-                                c <= (others => '0'); --> clear counter
-                                s <= sRcv;            --> go to receive
-                            else                      -- start fail 
-                                s <= sRdy;            --> go to ready
-                            end if;
+                        -- (one full period is 128 clock cycles)
 
-                        else               -- keep waiting
+                        o <= '0'; -- keep bit low
+
+                        if c(7) = '1' then -- ## full period reached
+                            
+                            c <= (others => '0'); --> clear counter
+                            s <= sSnd;            --> go to sending
+
+                        else               -- ## keep waiting
 
                             -- increment counter
                             c <= std_logic_vector(unsigned(c)+1);
@@ -112,56 +112,53 @@ architecture uartr_arch of uartr is
                         end if;
 
                     ----------------
-                    --   RECEIVE
+                    --   SENDING
                     ----------------
 
-                    -- (wait 8 periods and record one data bit for each period)
+                    -- (wait 8 periods while sending serial data bits)
 
-                    when sRcv =>
+                    when sSnd =>
 
                         -- (one full period is 128 clock cycles)
                         
-                        if c(7) = '1' then -- full period reached
+                        o <= i(p); -- ouput held at data value
+
+                        if c(7) = '1' then -- ## full period reached
                             
                             c <= (others => '0'); -- clear counter
-                            o(p) <= i;            -- record data bit
                             
                             if p = 7 then         -- found last bit
                                 s <= sStp;        --> go to stop
                             else                  -- not last bit
                                 p <= p + 1;       --> increment pointer
-                                s <= sRcv;        --> continue
+                                s <= sSnd;        --> continue
                             end if;
 
-                        else               -- wait for full period
+                        else               -- ## keep waiting
 
                             -- increment counter
                             c <= std_logic_vector(unsigned(c)+1);
-                            s <= sRcv; --> continue
+                            s <= sSnd; --> continue
 
                         end if;
-
 
                     ----------------
                     --    STOP
                     ----------------
 
-                    -- (wait one full period and set load signal)
-                    -- the load signal is set in the middle of
-                    -- the stop bit period (would need another half
-                    -- a period to keep the symetry with uartw, but
-                    -- is probably not necessary).
+                    -- (wait a full period with ouput high)
 
                     when sStp =>
 
                         -- (one full period is 128 clock cycles)
 
-                        if c(7) = '1' then -- full period reached
+                        o <= '1'; -- keep bit high
 
-                            l <= '1';             -- set load signal
+                        if c(7) = '1' then -- ## full period reached
+
                             s <= sRdy;            -- go to ready
 
-                        else               -- wait for full period
+                        else               -- ## keep waiting
 
                             -- increment counter
                             c <= std_logic_vector(unsigned(c)+1);
@@ -175,8 +172,8 @@ architecture uartr_arch of uartr is
 
                 end case;
             end if;
-        end process pUARTR;
+        end process pUARTW;
 -- done
-end architecture uartr_arch;
+end architecture uartw_arch;
 
 -------------------------------------------------

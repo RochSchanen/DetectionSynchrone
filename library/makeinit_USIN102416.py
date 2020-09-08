@@ -25,35 +25,35 @@ print("run Python3:" + version);
 from numpy import pi, sin
 
 # AL = int(argv[1])
-AL = 10	   # address size
+AL = 10    # address size
 AS = 2**AL # address length
 
 # DL = int(argv[2])
-DL = 16		 # data size
+DL = 16      # data size
 DS = 2**DL-1 # data length
 
 # build data
 RAM3, RAM2, RAM1, RAM0 = [], [], [], []
 for i in range(AS):
-	x = 2.0*pi/AS*i
-	y = (1.0+sin(x))/2.0
-	s = f'{int(DS*y):04x}'
-	RAM3.append(s[0])
-	RAM2.append(s[1])
-	RAM1.append(s[2])
-	RAM0.append(s[3])
+    x = 2.0*pi/AS*i
+    y = (1.0+sin(x))/2.0
+    s = f'{int(DS*y):04x}'
+    RAM3.append(s[0])
+    RAM2.append(s[1])
+    RAM1.append(s[2])
+    RAM0.append(s[3])
 
 # print init code
 n = 0
 for r in [RAM3, RAM2, RAM1, RAM0]:
-	r.reverse()
-	s = ''.join(r)
-	print('        generic map (')
-	for n in range(16):
-		print(f'INIT_{n:X} => X"{s[-64:]}"', end='')
-		s = s[:-64]
-		if n == 15: print(')')
-		else: print(',')
+    r.reverse()
+    s = ''.join(r)
+    print('        generic map (')
+    for n in range(16):
+        print(f'INIT_{n:X} => X"{s[-64:]}"', end='')
+        s = s[:-64]
+        if n == 15: print(')')
+        else: print(',')
 
 # >./makeinit_SIN102416.py
 # file: makeinit_USIN102416.py

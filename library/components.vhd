@@ -92,13 +92,24 @@ package components is
               t : in  std_logic;                       -- trigger (rising edge)
               o : out std_logic_vector (16 downto 0)); -- data (16 bits)
     end component USIN102416;
+
+    -- uartr.vhd
     
     component uartr is
         port (t : in  std_logic;                      -- clock (rising edge)
-              i : in  std_logic;                      -- data in
-              v : out std_logic;                      -- validate
-              o : out std_logic_vector (7 downto 0)); -- data out
+              i : in  std_logic;                      -- data in (serial)
+              l : out std_logic;                      -- load (1 cycle)
+              o : out std_logic_vector (7 downto 0)); -- data out (one byte)
     end component uartr;
+
+    -- uartw.vhd
+
+    component uartw is
+        port (t : in  std_logic;                      -- clock (rising edge)
+              i : in  std_logic_vector (7 downto 0);  -- data in (one byte)
+              l : in  std_logic;                      -- load (rising edge)
+              o : out std_logic);                     -- data out (serial)
+    end component uartw;
 
 end package components;
 

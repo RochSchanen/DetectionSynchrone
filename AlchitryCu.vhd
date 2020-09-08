@@ -40,15 +40,26 @@ end entity AlchitryCu;
 architecture arch of AlchitryCu is
 
     signal d : std_logic_vector (7 downto 0);
+    signal l : std_logic;
 
 begin
 
-    -- return serial input
-    AlCu_UART_TX <= AlCu_UART_RX;
-
     -- instanciate uartr
     uartr1 : uartr
-        port map(AlCu_CLOCK, AlCu_UART_RX, open, d);
+        port map(AlCu_CLOCK, AlCu_UART_RX, l, d);
+
+    -- return serial input:
+    
+    -- the data a should be held valid during
+    -- the full transmission: don't write to
+    -- the uart until after reading the returned
+    -- data. if the uart needs to receive a new
+    -- byte while sending current data, a buffer
+    -- register is necessary.
+
+    -- instanciate uartw
+    uartw1 : uartw
+        port map(AlCu_CLOCK, d, l, AlCu_UART_TX);
 
     AlCu_LED_0 <= d(0);
     AlCu_LED_1 <= d(1);
