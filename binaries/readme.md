@@ -50,6 +50,8 @@ VERIFY OK
 cdone: high  
 Bye.  
 AlchitryBlink.bin  
+
+
 leds should now display a wavy pattern.  
 press the reset button should display a fixed alternate pattern.  
 
